@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>& VILLA - Frame 651</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-black: #222;
+      --text-gray: #333;
+      --fill-black: #101010;
+      --pale-color: #fcf9f1;
+      --light-orange: #fbe8d6;
+      --orange: #ef802b;
+      --green: #14af91;
+      --blue: #0f83c6;
+      --red: #e05353;
+      --section-bg: #FBFBF7;
+      --border-color: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text-black);
+      overflow-x: auto;
+      background-color: transparent;
+    }
+
+    /* ========================================
+       PAGE WRAPPER - back-3 背景 (1920×3178px)
+    ======================================== */
+    .frame-651-page {
+      position: relative;
+      width: 1440px;
+      min-height: 2400px;
+      margin: 0 auto;
+      background-image: url('Frame 651.png');
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: 1440px auto;
+      background-color: transparent;
+    }
+
+    .frame-651-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       OUR STRENGTHS SECTION
+    ======================================== */
+    .strengths-section {
+      position: relative;
+      padding: 80px 80px 60px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .strengths-header {
+      position: relative;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .strengths-disclaimer-top {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 10px;
+      line-height: 16px;
+      color: var(--text-gray);
+      opacity: 0.8;
+    }
+
+    .strengths-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 32px;
+      margin-bottom: 4px;
+      color: var(--text-black);
+    }
+
+    .strengths-subtitle {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--text-gray);
+    }
+
+    .strengths-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 280px);
+      gap: 40px;
+      max-width: 920px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+    .strengths-card {
+      width: 280px;
+      height: 420px;
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid #E8E8E8;
+      padding: 30px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .strengths-card-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FF7020;
+      border-radius: 50%;
+    }
+
+    .strengths-card-icon svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .strengths-card-title {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 16px;
+      color: var(--text-black);
+    }
+
+    .strengths-card-illustration {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .strengths-card-illustration img,
+    .strengths-card-illustration svg {
+      max-width: 100%;
+      max-height: 150px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .strengths-card-desc {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 20px;
+      color: var(--text-gray);
+      text-align: left;
+      flex: 1;
+      width: 100%;
+      padding: 0 8px;
+    }
+
+    /* ========================================
+       SERVICE SECTION
+    ======================================== */
+    .service-section {
+      padding: 30px 30px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .service-center-axis {
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .service-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 32px;
+      margin-bottom: 4px;
+    }
+
+    .service-subtitle {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--text-gray);
+    }
+
+    .service-intro {
+      text-align: center;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .service-logo {
+      width: 180px;
+      height: 48px;
+      margin-bottom: 30px;
+    }
+
+    .service-phase {
+      text-align: center;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .service-phase-text {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 18px;
+      color: var(--green);
+    }
+
+    .service-flow-line {
+      width: 100%;
+      height: 24px;
+      margin-bottom: 30px;
+    }
+
+    .flow-arrow {
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .flow-arrow:hover {
+      opacity: 0.8;
+    }
+
+    .service-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .carousel-container {
+      width: 100%;
+      max-width: 920px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 40px;
+      transition: transform 0.5s ease-in-out;
+      padding: 24px 0;
+    }
+
+    .carousel-slide {
+      flex-shrink: 0;
+      width: 280px;
+    }
+
+    .service-card {
+      width: 280px;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0px -8px 8px 0px rgba(0,0,0,0.03),
+                  -8px 0px 8px 0px rgba(0,0,0,0.03),
+                  8px 0px 8px 0px rgba(0,0,0,0.03),
+                  0px 8px 8px 0px rgba(0,0,0,0.03);
+      padding: 36px 30px 70px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .service-card-wide {
+      width: 540px;
+      padding: 36px 30px 70px;
+    }
+
+    .service-card-wide .service-card-content {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .service-card-wide .service-card-logo {
+      width: 220px;
+    }
+
+    .service-card-wide .service-card-description {
+      width: 220px;
+    }
+
+    .service-card-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 16px;
+      border-radius: 16px;
+      color: white;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 18px;
+      white-space: nowrap;
+    }
+
+    .badge-orange { background-color: var(--orange); letter-spacing: 12px; padding-right: 4px; }
+    .badge-green { background-color: var(--green); }
+    .badge-blue { background-color: var(--blue); }
+    .badge-red { background-color: var(--red); }
+
+    .service-card-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .service-card-logo-mark {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+    }
+
+    .service-card-logo-text {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1;
+      color: var(--text-black);
+    }
+
+    .service-card-description {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    .service-card-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      background-color: var(--light-orange);
+      border-radius: 0 0 14px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      color: var(--text-black);
+    }
+
+    .service-card-footer:hover {
+      background-color: #f5d9c0;
+    }
+
+    .service-card-footer-text {
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 13px;
+    }
+
+    .service-card-footer-arrow {
+      width: 18px;
+      height: 18px;
+    }
+
+    .service-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 240px;
+      height: 48px;
+      background-color: var(--fill-black);
+      border-radius: 24px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      font-size: 13px;
+      position: relative;
+      transition: opacity 0.3s ease;
+    }
+
+    .service-button:hover {
+      opacity: 0.85;
+    }
+
+    .service-button-icon {
+      position: absolute;
+      right: 20px;
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ========================================
+       OPERATING COMPANY SECTION
+    ======================================== */
+    .operating-company-section {
+      position: relative;
+      background-color: transparent;
+      padding: 60px 30px 80px;
+      text-align: center;
+    }
+
+    .operating-company-header {
+      margin-bottom: 30px;
+    }
+
+    .operating-company-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 32px;
+      letter-spacing: 0;
+      margin-bottom: 4px;
+      color: var(--text-gray);
+    }
+
+    .operating-company-subtitle {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--text-gray);
+    }
+
+    .operating-company-white-block {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+      background: transparent;
+      border-radius: 0;
+      padding: 30px 48px 48px;
+      box-shadow: none;
+    }
+
+    .operating-company-logo {
+      margin-bottom: 36px;
+    }
+
+    .operating-company-logo img {
+      display: block;
+      height: 44px;
+      width: auto;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    .operating-company-desc {
+      font-size: 13px;
+      line-height: 1.9;
+      color: var(--text-black);
+      text-align: center;
+      margin-bottom: 48px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .operating-company-info {
+      text-align: left;
+      border-top: 1px solid var(--border-color);
+      margin-top: 30px;
+      padding-top: 18px;
+    }
+
+    .operating-company-info-row {
+      display: flex;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border-color);
+      gap: 36px;
+    }
+
+    .operating-company-info-row:first-child {
+      padding-top: 0;
+    }
+
+    .operating-company-info-label {
+      flex: 0 0 90px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text-black);
+    }
+
+    .operating-company-info-value {
+      flex: 1;
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--text-black);
+    }
+
+    .operating-company-info-value a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .operating-company-info-value a:hover {
+      text-decoration: underline;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 1440px) {
+      .frame-651-page {
+        width: 100%;
+        background-size: 100% auto;
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .strengths-section {
+        padding: 60px 30px 40px;
+      }
+
+      .service-section {
+        padding: 40px 16px 60px;
+      }
+
+      .service-card-wide {
+        width: 100%;
+        max-width: 540px;
+      }
+
+      .service-card-wide .service-card-content {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .strengths-section {
+        padding: 60px 20px 40px;
+      }
+
+      .strengths-disclaimer-top {
+        position: static;
+        display: block;
+        text-align: right;
+        margin-bottom: 12px;
+      }
+
+      .strengths-cards {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 100%;
+      }
+
+      .strengths-card {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        min-height: 300px;
+        margin: 0 auto;
+      }
+
+      .strengths-title,
+      .service-title,
+      .operating-company-title {
+        font-size: 26px;
+        line-height: 26px;
+      }
+
+      .operating-company-section {
+        padding: 60px 20px 100px;
+      }
+
+      .operating-company-header {
+        margin-bottom: 40px;
+      }
+
+      .operating-company-white-block {
+        padding: 40px 24px 60px;
+        border-radius: 0;
+      }
+
+      .operating-company-logo img {
+        height: 36px;
+      }
+
+      .operating-company-desc {
+        margin-bottom: 36px;
+      }
+
+      .operating-company-info-row {
+        flex-direction: column;
+        gap: 6px;
+        padding: 16px 0;
+      }
+
+      .operating-company-info-label {
+        flex: none;
+      }
+
+      .carousel-slide {
+        width: 240px;
+      }
+
+      .service-card {
+        width: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame-651-page">
+    <div class="frame-651-content">
+
+      <!-- OUR STRENGTHS -->
+      <section class="strengths-section">
+        <header class="strengths-header">
+          <span class="strengths-disclaimer-top">※イラストはイメージです。</span>
+          <h2 class="strengths-title">OUR STRENGTHS</h2>
+          <p class="strengths-subtitle">& VILLA の強み</p>
+        </header>
+
+        <div class="strengths-cards">
+          <div class="strengths-card">
+            <div class="strengths-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12l5 5L20 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="strengths-card-title">豊富な実績</h3>
+            <div class="strengths-card-illustration">
+              <img src="houhunajisseki.svg" alt="豊富な実績イラスト">
+            </div>
+            <p class="strengths-card-desc">別荘シリーズ「COCO VILLA」の運営実績を活かし、お客様の物件価値を最大化するノウハウを提供します。</p>
+          </div>
+
+          <div class="strengths-card">
+            <div class="strengths-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12l5 5L20 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="strengths-card-title">価値を最大限に高める仕組み</h3>
+            <div class="strengths-card-illustration">
+              <img src="kati-sikumi.svg" alt="価値を最大限に高める仕組みイラスト">
+            </div>
+            <p class="strengths-card-desc">売買から開業、運営管理まで一貫したサポート体制で、物件の価値を最大限に引き出します。</p>
+          </div>
+
+          <div class="strengths-card">
+            <div class="strengths-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12l5 5L20 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="strengths-card-title">豊富な実績</h3>
+            <div class="strengths-card-illustration">
+              <img src="jisseki.svg" alt="豊富な実績イラスト">
+            </div>
+            <p class="strengths-card-desc">不動産・集客・運営の各分野に精通した専門家が、お客様のニーズに合わせた最適なプランを提案します。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICE -->
+      <section class="service-section">
+        <div class="service-center-axis">
+          <header class="service-header">
+            <h2 class="service-title">SERVICE</h2>
+            <p class="service-subtitle">& VILLA のサービス</p>
+          </header>
+
+          <div class="service-intro">
+            <svg class="service-logo" viewBox="0 0 240 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M28.5759 22.821C26.6479 21.7422 25.2771 19.5846 24.9762 17.1824C24.4858 13.2231 27.3277 9.60862 31.2953 9.11926C32.7441 8.94131 33.5911 9.11926 35.352 9.77547C37.2244 10.5429 39.0409 11.9775 40.6124 13.9127L47.6669 8.22956C45.1148 5.08213 42.0166 2.70214 38.6954 1.36755L38.5728 1.32306C35.7309 0.266517 33.4576 -0.267317 30.1808 0.133058C21.2538 1.22297 14.879 9.36396 15.9712 18.2723C16.0826 19.1953 16.2944 20.0962 16.5507 20.9748C16.7959 20.9304 17.0411 20.8747 17.2974 20.8414C21.187 20.3631 25.0876 21.0527 28.5759 22.8099V22.821Z" fill="#E1690D"/>
+              <path d="M53.2061 39.3809C55.1785 33.4753 55.3569 26.7357 53.6406 20.2629L44.8696 22.5874C45.8952 26.4578 46.0178 30.4171 45.271 34.0315L29.0999 23.1212L28.6207 22.8432C28.6207 22.8432 28.5761 22.8209 28.5539 22.8098C25.0656 21.0526 21.165 20.363 17.2754 20.8413C17.019 20.8746 16.7849 20.9302 16.5286 20.9747C6.1751 22.643 -1.13589 32.2409 0.145765 42.7396C0.903608 48.9565 4.6372 54.4839 10.1204 57.5202C14.3888 59.7225 19.9685 60.7678 23.5164 60.7678C33.2792 60.7678 42.9084 55.952 49.0046 47.4662L57.4077 53.1382L62.4893 45.6424L53.195 39.3698L53.2061 39.3809ZM14.2774 49.468C11.4577 47.7997 9.53971 44.8856 9.13949 41.6385C8.42634 35.8332 12.5722 30.5392 18.3899 29.8274C20.4179 29.5828 22.4458 29.9164 24.2734 30.795L41.4929 42.4059C35.0959 51.103 23.5719 54.306 14.2774 49.468Z" fill="#0F83C6"/>
+              <text x="72" y="45" font-family="Montserrat, sans-serif" font-size="42" font-weight="600" fill="#14AF91">&amp;</text><text x="102" y="45" font-family="Montserrat, sans-serif" font-size="42" font-weight="600" fill="#222">VILLA</text>
+            </svg>
+          </div>
+
+          <div class="service-phase">
+            <p class="service-phase-text">売買 / 運営までの計画・準備</p>
+          </div>
+
+          <svg class="service-flow-line" viewBox="0 0 920 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="fadeInLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FBE8D6" stop-opacity="0"/>
+                <stop offset="100%" stop-color="#FBE8D6" stop-opacity="1"/>
+              </linearGradient>
+              <linearGradient id="fadeOutRight" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FBE8D6" stop-opacity="1"/>
+                <stop offset="100%" stop-color="#FBE8D6" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="12" width="150" height="6" rx="3" fill="url(#fadeInLeft)"/>
+            <rect x="150" y="12" width="620" height="6" fill="#FBE8D6"/>
+            <rect x="770" y="12" width="150" height="6" rx="3" fill="url(#fadeOutRight)"/>
+            <polygon class="flow-arrow" data-slide="0" points="300,5 320,15 300,25" fill="#FBE8D6"/>
+            <polygon class="flow-arrow" data-slide="1" points="445,0 475,15 445,30" fill="#FBE8D6"/>
+            <polygon class="flow-arrow" data-slide="2" points="600,5 620,15 600,25" fill="#FBE8D6"/>
+          </svg>
+        </div>
+
+        <div class="service-cards">
+          <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+              <div class="carousel-slide" data-index="0">
+                <div class="service-card">
+                  <span class="service-card-badge badge-orange">サウナ宿</span>
+                  <div class="service-card-logo">
+                    <svg class="service-card-logo-mark" viewBox="0 0 63 62" fill="none"><path d="M28.5759 22.821C26.6479 21.7422 25.2771 19.5846 24.9762 17.1824C24.4858 13.2231 27.3277 9.60862 31.2953 9.11926C32.7441 8.94131 33.5911 9.11926 35.352 9.77547C37.2244 10.5429 39.0409 11.9775 40.6124 13.9127L47.6669 8.22956C45.1148 5.08213 42.0166 2.70214 38.6954 1.36755L38.5728 1.32306C35.7309 0.266517 33.4576 -0.267317 30.1808 0.133058C21.2538 1.22297 14.879 9.36396 15.9712 18.2723C16.0826 19.1953 16.2944 20.0962 16.5507 20.9748C16.7959 20.9304 17.0411 20.8747 17.2974 20.8414C21.187 20.3631 25.0876 21.0527 28.5759 22.8099V22.821Z" fill="#E1690D"/><path d="M53.2061 39.3809C55.1785 33.4753 55.3569 26.7357 53.6406 20.2629L44.8696 22.5874C45.8952 26.4578 46.0178 30.4171 45.271 34.0315L29.0999 23.1212L28.6207 22.8432C28.6207 22.8432 28.5761 22.8209 28.5539 22.8098C25.0656 21.0526 21.165 20.363 17.2754 20.8413C17.019 20.8746 16.7849 20.9302 16.5286 20.9747C6.1751 22.643 -1.13589 32.2409 0.145765 42.7396C0.903608 48.9565 4.6372 54.4839 10.1204 57.5202C14.3888 59.7225 19.9685 60.7678 23.5164 60.7678C33.2792 60.7678 42.9084 55.952 49.0046 47.4662L57.4077 53.1382L62.4893 45.6424L53.195 39.3698L53.2061 39.3809ZM14.2774 49.468C11.4577 47.7997 9.53971 44.8856 9.13949 41.6385C8.42634 35.8332 12.5722 30.5392 18.3899 29.8274C20.4179 29.5828 22.4458 29.9164 24.2734 30.795L41.4929 42.4059C35.0959 51.103 23.5719 54.306 14.2774 49.468Z" fill="#0F83C6"/></svg>
+                    <span class="service-card-logo-text">サウナ宿</span>
+                  </div>
+                  <p class="service-card-description">全国のサウナ付き宿を検索・予約できるOTAサービスです。</p>
+                  <a href="#" class="service-card-footer">
+                    <span class="service-card-footer-text">サービスを見る</span>
+                    <svg class="service-card-footer-arrow" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#EF802B"/><path d="M10 8L14 12L10 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                </div>
+              </div>
+              <div class="carousel-slide" data-index="1">
+                <div class="service-card">
+                  <span class="service-card-badge badge-green">別荘投資</span>
+                  <div class="service-card-logo">
+                    <svg class="service-card-logo-mark" viewBox="0 0 63 62" fill="none"><path d="M28.5759 22.821C26.6479 21.7422 25.2771 19.5846 24.9762 17.1824C24.4858 13.2231 27.3277 9.60862 31.2953 9.11926C32.7441 8.94131 33.5911 9.11926 35.352 9.77547C37.2244 10.5429 39.0409 11.9775 40.6124 13.9127L47.6669 8.22956C45.1148 5.08213 42.0166 2.70214 38.6954 1.36755L38.5728 1.32306C35.7309 0.266517 33.4576 -0.267317 30.1808 0.133058C21.2538 1.22297 14.879 9.36396 15.9712 18.2723C16.0826 19.1953 16.2944 20.0962 16.5507 20.9748C16.7959 20.9304 17.0411 20.8747 17.2974 20.8414C21.187 20.3631 25.0876 21.0527 28.5759 22.8099V22.821Z" fill="#E1690D"/><path d="M53.2061 39.3809C55.1785 33.4753 55.3569 26.7357 53.6406 20.2629L44.8696 22.5874C45.8952 26.4578 46.0178 30.4171 45.271 34.0315L29.0999 23.1212L28.6207 22.8432C28.6207 22.8432 28.5761 22.8209 28.5539 22.8098C25.0656 21.0526 21.165 20.363 17.2754 20.8413C17.019 20.8746 16.7849 20.9302 16.5286 20.9747C6.1751 22.643 -1.13589 32.2409 0.145765 42.7396C0.903608 48.9565 4.6372 54.4839 10.1204 57.5202C14.3888 59.7225 19.9685 60.7678 23.5164 60.7678C33.2792 60.7678 42.9084 55.952 49.0046 47.4662L57.4077 53.1382L62.4893 45.6424L53.195 39.3698L53.2061 39.3809ZM14.2774 49.468C11.4577 47.7997 9.53971 44.8856 9.13949 41.6385C8.42634 35.8332 12.5722 30.5392 18.3899 29.8274C20.4179 29.5828 22.4458 29.9164 24.2734 30.795L41.4929 42.4059C35.0959 51.103 23.5719 54.306 14.2774 49.468Z" fill="#0F83C6"/></svg>
+                    <span class="service-card-logo-text">別荘投資</span>
+                  </div>
+                  <p class="service-card-description">バケーションレンタル物件の不動産売買を行います。</p>
+                  <a href="#" class="service-card-footer">
+                    <span class="service-card-footer-text">サービスを見る</span>
+                    <svg class="service-card-footer-arrow" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#14AF91"/><path d="M10 8L14 12L10 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                </div>
+              </div>
+              <div class="carousel-slide" data-index="2">
+                <div class="service-card">
+                  <span class="service-card-badge badge-blue">やど管理</span>
+                  <div class="service-card-logo">
+                    <svg class="service-card-logo-mark" viewBox="0 0 63 62" fill="none"><path d="M28.5759 22.821C26.6479 21.7422 25.2771 19.5846 24.9762 17.1824C24.4858 13.2231 27.3277 9.60862 31.2953 9.11926C32.7441 8.94131 33.5911 9.11926 35.352 9.77547C37.2244 10.5429 39.0409 11.9775 40.6124 13.9127L47.6669 8.22956C45.1148 5.08213 42.0166 2.70214 38.6954 1.36755L38.5728 1.32306C35.7309 0.266517 33.4576 -0.267317 30.1808 0.133058C21.2538 1.22297 14.879 9.36396 15.9712 18.2723C16.0826 19.1953 16.2944 20.0962 16.5507 20.9748C16.7959 20.9304 17.0411 20.8747 17.2974 20.8414C21.187 20.3631 25.0876 21.0527 28.5759 22.8099V22.821Z" fill="#E1690D"/><path d="M53.2061 39.3809C55.1785 33.4753 55.3569 26.7357 53.6406 20.2629L44.8696 22.5874C45.8952 26.4578 46.0178 30.4171 45.271 34.0315L29.0999 23.1212L28.6207 22.8432C28.6207 22.8432 28.5761 22.8209 28.5539 22.8098C25.0656 21.0526 21.165 20.363 17.2754 20.8413C17.019 20.8746 16.7849 20.9302 16.5286 20.9747C6.1751 22.643 -1.13589 32.2409 0.145765 42.7396C0.903608 48.9565 4.6372 54.4839 10.1204 57.5202C14.3888 59.7225 19.9685 60.7678 23.5164 60.7678C33.2792 60.7678 42.9084 55.952 49.0046 47.4662L57.4077 53.1382L62.4893 45.6424L53.195 39.3698L53.2061 39.3809ZM14.2774 49.468C11.4577 47.7997 9.53971 44.8856 9.13949 41.6385C8.42634 35.8332 12.5722 30.5392 18.3899 29.8274C20.4179 29.5828 22.4458 29.9164 24.2734 30.795L41.4929 42.4059C35.0959 51.103 23.5719 54.306 14.2774 49.468Z" fill="#0F83C6"/></svg>
+                    <span class="service-card-logo-text">やど管理</span>
+                  </div>
+                  <p class="service-card-description">バケーションレンタルの運営・管理を代行いたします。</p>
+                  <a href="#" class="service-card-footer">
+                    <span class="service-card-footer-text">サービスを見る</span>
+                    <svg class="service-card-footer-arrow" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#0F83C6"/><path d="M10 8L14 12L10 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-card service-card-wide">
+                  <span class="service-card-badge badge-red">やど企画</span>
+            <div class="service-card-content">
+              <div class="service-card-logo">
+                <svg class="service-card-logo-mark" viewBox="0 0 63 62" fill="none"><path d="M28.5759 22.821C26.6479 21.7422 25.2771 19.5846 24.9762 17.1824C24.4858 13.2231 27.3277 9.60862 31.2953 9.11926C32.7441 8.94131 33.5911 9.11926 35.352 9.77547C37.2244 10.5429 39.0409 11.9775 40.6124 13.9127L47.6669 8.22956C45.1148 5.08213 42.0166 2.70214 38.6954 1.36755L38.5728 1.32306C35.7309 0.266517 33.4576 -0.267317 30.1808 0.133058C21.2538 1.22297 14.879 9.36396 15.9712 18.2723C16.0826 19.1953 16.2944 20.0962 16.5507 20.9748C16.7959 20.9304 17.0411 20.8747 17.2974 20.8414C21.187 20.3631 25.0876 21.0527 28.5759 22.8099V22.821Z" fill="#E1690D"/><path d="M53.2061 39.3809C55.1785 33.4753 55.3569 26.7357 53.6406 20.2629L44.8696 22.5874C45.8952 26.4578 46.0178 30.4171 45.271 34.0315L29.0999 23.1212L28.6207 22.8432C28.6207 22.8432 28.5761 22.8209 28.5539 22.8098C25.0656 21.0526 21.165 20.363 17.2754 20.8413C17.019 20.8746 16.7849 20.9302 16.5286 20.9747C6.1751 22.643 -1.13589 32.2409 0.145765 42.7396C0.903608 48.9565 4.6372 54.4839 10.1204 57.5202C14.3888 59.7225 19.9685 60.7678 23.5164 60.7678C33.2792 60.7678 42.9084 55.952 49.0046 47.4662L57.4077 53.1382L62.4893 45.6424L53.195 39.3698L53.2061 39.3809ZM14.2774 49.468C11.4577 47.7997 9.53971 44.8856 9.13949 41.6385C8.42634 35.8332 12.5722 30.5392 18.3899 29.8274C20.4179 29.5828 22.4458 29.9164 24.2734 30.795L41.4929 42.4059C35.0959 51.103 23.5719 54.306 14.2774 49.468Z" fill="#0F83C6"/></svg>
+                <span class="service-card-logo-text">やど企画</span>
+              </div>
+              <p class="service-card-description">コンサルティングなどバケーションレンタルの立ち上げを支援します。</p>
+            </div>
+            <a href="#" class="service-card-footer">
+              <span class="service-card-footer-text">サービスを見る</span>
+              <svg class="service-card-footer-arrow" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#E05353"/><path d="M10 8L14 12L10 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <a href="#" class="service-button">
+          <span>サービス一覧</span>
+          <svg class="service-button-icon" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+      </section>
+
+      <!-- OPERATING COMPANY -->
+      <section class="operating-company-section">
+        <div class="operating-company-header">
+          <h2 class="operating-company-title">OPERATING COMPANY</h2>
+          <p class="operating-company-subtitle">運営会社</p>
+        </div>
+
+        <div class="operating-company-white-block">
+          <div class="operating-company-logo">
+            <img src="cocozas-logo.png" alt="COCOZAS ワクワク、生きる">
+          </div>
+
+          <p class="operating-company-desc">
+            ココザスではお金・仕事・住まいの3つの事業を通じてあなたが毎日を「ワクワク、生きる」ためにサポートします。
+          </p>
+
+          <div class="operating-company-info">
+            <div class="operating-company-info-row">
+              <span class="operating-company-info-label">社名</span>
+              <span class="operating-company-info-value">ココザス株式会社 (COCOZAS.Co.,Ltd.)</span>
+            </div>
+            <div class="operating-company-info-row">
+              <span class="operating-company-info-label">HP</span>
+              <span class="operating-company-info-value"><a href="https://cocozas.jp/" target="_blank" rel="noopener noreferrer">https://cocozas.jp/</a></span>
+            </div>
+            <div class="operating-company-info-row">
+              <span class="operating-company-info-label">事業内容</span>
+              <span class="operating-company-info-value">個人向けライフデザイン事業(資産形成/不動産全般/住宅提供)、別荘シリーズ「COCO VILLA」の運営、都市型プライベートサウナ「TARU SAUNA LABO」の運営</span>
+            </div>
+            <div class="operating-company-info-row">
+              <span class="operating-company-info-label">設立</span>
+              <span class="operating-company-info-value">2016年7月11日</span>
+            </div>
+            <div class="operating-company-info-row">
+              <span class="operating-company-info-label">所在地</span>
+              <span class="operating-company-info-value">〒105-0014 東京都港区芝2-27-6 VORT芝公園3F・TF</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const track = document.getElementById('carouselTrack');
+      if (!track) return;
+      const slides = document.querySelectorAll('.carousel-slide');
+      const arrows = document.querySelectorAll('.flow-arrow');
+      const slideCount = slides.length;
+      const slideWidth = 280;
+      const slideGap = 40;
+
+      let currentSlide = 0;
+      let autoplayInterval;
+      const autoplayDelay = 4000;
+
+      function getOffset(index) {
+        const container = document.querySelector('.carousel-container');
+        if (!container) return 0;
+        const containerWidth = container.offsetWidth;
+        const centerOffset = (containerWidth - slideWidth) / 2;
+        return centerOffset - (index * (slideWidth + slideGap));
+      }
+
+      function goToSlide(index) {
+        if (index < 0) index = slideCount - 1;
+        if (index >= slideCount) index = 0;
+        currentSlide = index;
+        const offset = getOffset(index);
+        track.style.transform = 'translateX(' + offset + 'px)';
+        slides.forEach(function(slide, i) {
+          slide.style.opacity = i === index ? '1' : '0.5';
+          slide.style.transform = i === index ? 'scale(1)' : 'scale(0.9)';
+        });
+      }
+
+      function nextSlide() {
+        goToSlide(currentSlide + 1);
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayInterval = setInterval(nextSlide, autoplayDelay);
+      }
+
+      function stopAutoplay() {
+        if (autoplayInterval) clearInterval(autoplayInterval);
+      }
+
+      arrows.forEach(function(arrow) {
+        arrow.addEventListener('click', function() {
+          const slideIndex = parseInt(this.getAttribute('data-slide'), 10);
+          goToSlide(slideIndex);
+          startAutoplay();
+        });
+      });
+
+      const container = document.querySelector('.carousel-container');
+      if (container) {
+        container.addEventListener('mouseenter', stopAutoplay);
+        container.addEventListener('mouseleave', startAutoplay);
+      }
+
+      slides.forEach(function(slide) {
+        slide.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      });
+
+      goToSlide(0);
+      startAutoplay();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>& VILLA - SERVICE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pale-color: #fcf9f1;
+      --text-black: #222;
+      --fill-black: #101010;
+      --orange: #ef802b;
+      --light-orange: #fbe8d6;
+      --green: #14af91;
+      --blue: #0f83c6;
+      --red: #e05353;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: white;
+      color: var(--text-black);
+    }
+
+    .service-section {
+      padding: 120px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 矢印の大きい部分を縦ライン基準にした中央揃え用ラッパー */
+    .service-center-axis {
+      width: 920px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .service-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .service-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 40px;
+      margin-bottom: 6px;
+    }
+
+    .service-subtitle {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    .service-intro {
+      text-align: center;
+      margin-bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .service-intro-text {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 32px;
+      margin-bottom: 60px;
+    }
+
+    .service-logo {
+      width: 240px;
+      height: 62px;
+      margin-bottom: 80px;
+    }
+
+    .service-phase {
+      text-align: center;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+
+    .service-phase-text {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 22px;
+      color: var(--green);
+    }
+
+    .service-flow-line {
+      width: 100%;
+      height: 30px;
+      margin-bottom: 80px;
+    }
+
+    /* フローラインの三角形をクリック可能に */
+    .flow-arrow {
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .flow-arrow:hover {
+      opacity: 0.8;
+    }
+
+    .service-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 120px;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 80px;
+    }
+
+    /* カルーセル */
+    .carousel-container {
+      width: 100%;
+      max-width: 1200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 60px;
+      transition: transform 0.5s ease-in-out;
+      padding: 30px 0;
+    }
+
+    .carousel-slide {
+      flex-shrink: 0;
+      width: 360px;
+    }
+
+    /* サービスカード */
+    .service-card {
+      width: 360px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0px -10px 10px 0px rgba(0,0,0,0.03),
+                  -10px 0px 10px 0px rgba(0,0,0,0.03),
+                  10px 0px 10px 0px rgba(0,0,0,0.03),
+                  0px 10px 10px 0px rgba(0,0,0,0.03);
+      padding: 50px 40px 90px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .service-card-wide {
+      width: 700px;
+      padding: 50px 40px 90px;
+    }
+
+    .service-card-wide .service-card-content {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .service-card-wide .service-card-logo {
+      width: 300px;
+    }
+
+    .service-card-wide .service-card-description {
+      width: 300px;
+    }
+
+    /* カードのバッジ */
+    .service-card-badge {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      border-radius: 21px;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+      white-space: nowrap;
+    }
+
+    .badge-orange {
+      background-color: var(--orange);
+      letter-spacing: 16px;
+      padding-right: 4px;
+    }
+
+    .badge-green {
+      background-color: var(--green);
+    }
+
+    .badge-blue {
+      background-color: var(--blue);
+    }
+
+    .badge-red {
+      background-color: var(--red);
+    }
+
+    /* カードのロゴ */
+    .service-card-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .service-card-logo-mark {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    .service-card-logo-text {
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--text-black);
+    }
+
+    .service-card-logo img {
+      height: 100%;
+      width: auto;
+    }
+
+    /* カードの説明 */
+    .service-card-description {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 32px;
+    }
+
+    /* カードのフッター */
+    .service-card-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: var(--light-orange);
+      border-radius: 0 0 18px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      color: var(--text-black);
+    }
+
+    .service-card-footer:hover {
+      background-color: #f5d9c0;
+    }
+
+    .service-card-footer-text {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 15px;
+    }
+
+    .service-card-footer-arrow {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* CTAボタン */
+    .service-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 300px;
+      height: 60px;
+      background-color: var(--fill-black);
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      font-size: 16px;
+      position: relative;
+      transition: opacity 0.3s ease;
+    }
+
+    .service-button:hover {
+      opacity: 0.85;
+    }
+
+    .service-button-arrow {
+      position: absolute;
+      right: 25px;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 960px) {
+      .service-center-axis {
+        width: 100%;
+        max-width: 920px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .service-section {
+        padding: 80px 20px;
+      }
+
+      .service-card-wide {
+        width: 100%;
+        max-width: 700px;
+      }
+
+      .service-card-wide .service-card-content {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .service-title {
+        font-size: 32px;
+      }
+
+      .service-intro-text {
+        font-size: 18px;
+        line-height: 28px;
+      }
+
+      .carousel-slide {
+        width: 300px;
+      }
+
+      .service-card {
+        width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="service-section">
+    <div class="service-center-axis">
+      <!-- ヘッダー -->
+      <header class="service-header">
+        <h2 class="service-title">SERVICE</h2>
+        <p class="service-subtitle">サービス</p>
+      </header>
+
+      <!-- イントロ -->
+      <div class="service-intro">
+      <p class="service-intro-text">バケーションレンタル運営に関わるすべてのサービスをワンストップで提供しています</p>
+      
+      <!-- & VILLA ロゴ -->
+      <svg class="service-logo" viewBox="0 0 240 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M28.5759 22.821C26.6479 21.7422 25.2771 19.5846 24.9762 17.1824C24.4858 13.2231 27.3277 9.60862 31.2953 9.11926C32.7441 8.94131 33.5911 9.11926 35.352 9.77547C37.2244 10.5429 39.0409 11.9775 40.6124 13.9127L47.6669 8.22956C45.1148 5.08213 42.0166 2.70214 38.6954 1.36755L38.5728 1.32306C35.7309 0.266517 33.4576 -0.267317 30.1808 0.133058C21.2538 1.22297 14.879 9.36396 15.9712 18.2723C16.0826 19.1953 16.2944 20.0962 16.5507 20.9748C16.7959 20.9304 17.0411 20.8747 17.2974 20.8414C21.187 20.3631 25.0876 21.0527 28.5759 22.8099V22.821Z" fill="#E1690D"/>
+        <path d="M53.2061 39.3809C55.1785 33.4753 55.3569 26.7357 53.6406 20.2629L44.8696 22.5874C45.8952 26.4578 46.0178 30.4171 45.271 34.0315L29.0999 23.1212L28.6207 22.8432C28.6207 22.8432 28.5761 22.8209 28.5539 22.8098C25.0656 21.0526 21.165 20.363 17.2754 20.8413C17.019 20.8746 16.7849 20.9302 16.5286 20.9747C6.1751 22.643 -1.13589 32.2409 0.145765 42.7396C0.903608 48.9565 4.6372 54.4839 10.1204 57.5202C14.3888 59.7225 19.9685 60.7678 23.5164 60.7678C33.2792 60.7678 42.9084 55.952 49.0046 47.4662L57.4077 53.1382L62.4893 45.6424L53.195 39.3698L53.2061 39.3809ZM14.2774 49.468C11.4577 47.7997 9.53971 44.8856 9.13949 41.6385C8.42634 35.8332 12.5722 30.5392 18.3899 29.8274C20.4179 29.5828 22.4458 29.9164 24.2734 30.795L41.4929 42.4059C35.0959 51.103 23.5719 54.306 14.2774 49.468Z" fill="#0F83C6"/>
+        <text x="75" y="45" font-family="Montserrat, sans-serif" font-size="42" font-weight="600" fill="#222">VILLA</text>
+      </svg>
+    </div>
+
+    <!-- フェーズ -->
+    <div class="service-phase">
+      <p class="service-phase-text">売買／開業までの計画・準備</p>
+    </div>
+
+    <!-- フローライン -->
+    <svg class="service-flow-line" viewBox="0 0 920 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="fadeInLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#FBE8D6" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#FBE8D6" stop-opacity="1"/>
+        </linearGradient>
+        <linearGradient id="fadeOutRight" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#FBE8D6" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#FBE8D6" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <!-- ライン -->
+      <rect x="0" y="12" width="150" height="6" rx="3" fill="url(#fadeInLeft)"/>
+      <rect x="150" y="12" width="620" height="6" fill="#FBE8D6"/>
+      <rect x="770" y="12" width="150" height="6" rx="3" fill="url(#fadeOutRight)"/>
+      <!-- クリック可能な三角形（中央揃え） -->
+      <!-- 左の小さい三角形: 中央から-150px -->
+      <polygon class="flow-arrow" id="arrow0" data-slide="0" points="300,5 320,15 300,25" fill="#FBE8D6"/>
+      <!-- 中央の大きい三角形: 中心460 -->
+      <polygon class="flow-arrow" id="arrow1" data-slide="1" points="445,0 475,15 445,30" fill="#FBE8D6"/>
+      <!-- 右の小さい三角形: 中央から+150px -->
+      <polygon class="flow-arrow" id="arrow2" data-slide="2" points="600,5 620,15 600,25" fill="#FBE8D6"/>
+    </svg>
+    </div>
+
+    <!-- サービスカード -->
+    <div class="service-cards">
+      <!-- カルーセル -->
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- スライド1: サウナ宿 -->
+          <div class="carousel-slide" data-index="0">
+            <div class="service-card">
+              <span class="service-card-badge badge-orange">集客</span>
+              <div class="service-card-logo">
+                <svg class="service-card-logo-mark" viewBox="0 0 63 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M28.5759 22.821C26.6479 21.7422 25.2771 19.5846 24.9762 17.1824C24.4858 13.2231 27.3277 9.60862 31.2953 9.11926C32.7441 8.94131 33.5911 9.11926 35.352 9.77547C37.2244 10.5429 39.0409 11.9775 40.6124 13.9127L47.6669 8.22956C45.1148 5.08213 42.0166 2.70214 38.6954 1.36755L38.5728 1.32306C35.7309 0.266517 33.4576 -0.267317 30.1808 0.133058C21.2538 1.22297 14.879 9.36396 15.9712 18.2723C16.0826 19.1953 16.2944 20.0962 16.5507 20.9748C16.7959 20.9304 17.0411 20.8747 17.2974 20.8414C21.187 20.3631 25.0876 21.0527 28.5759 22.8099V22.821Z" fill="#E1690D"/>
+                  <path d="M53.2061 39.3809C55.1785 33.4753 55.3569 26.7357 53.6406 20.2629L44.8696 22.5874C45.8952 26.4578 46.0178 30.4171 45.271 34.0315L29.0999 23.1212L28.6207 22.8432C28.6207 22.8432 28.5761 22.8209 28.5539 22.8098C25.0656 21.0526 21.165 20.363 17.2754 20.8413C17.019 20.8746 16.7849 20.9302 16.5286 20.9747C6.1751 22.643 -1.13589 32.2409 0.145765 42.7396C0.903608 48.9565 4.6372 54.4839 10.1204 57.5202C14.3888 59.7225 19.9685 60.7678 23.5164 60.7678C33.2792 60.7678 42.9084 55.952 49.0046 47.4662L57.4077 53.1382L62.4893 45.6424L53.195 39.3698L53.2061 39.3809ZM14.2774 49.468C11.4577 47.7997 9.53971 44.8856 9.13949 41.6385C8.42634 35.8332 12.5722 30.5392 18.3899 29.8274C20.4179 29.5828 22.4458 29.9164 24.2734 30.795L41.4929 42.4059C35.0959 51.103 23.5719 54.306 14.2774 49.468Z" fill="#0F83C6"/>
+                </svg>
+                <span class="service-card-logo-text">サウナ宿</span>
+              </div>
+              <p class="service-card-description">全国のサウナ付き宿を検索・予約できるOTAサービスです。</p>
+              <a href="#" class="service-card-footer">
+                <span class="service-card-footer-text">サービス概要</span>
+                <svg class="service-card-footer-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" fill="#EF802B"/>
+                  <path d="M10 8L14 12L10 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- スライド2: 別荘投資 -->
+          <div class="carousel-slide" data-index="1">
+            <div class="service-card">
+              <span class="service-card-badge badge-green">物件の売買</span>
+              <div class="service-card-logo">
+                <svg class="service-card-logo-mark" viewBox="0 0 63 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M28.5759 22.821C26.6479 21.7422 25.2771 19.5846 24.9762 17.1824C24.4858 13.2231 27.3277 9.60862 31.2953 9.11926C32.7441 8.94131 33.5911 9.11926 35.352 9.77547C37.2244 10.5429 39.0409 11.9775 40.6124 13.9127L47.6669 8.22956C45.1148 5.08213 42.0166 2.70214 38.6954 1.36755L38.5728 1.32306C35.7309 0.266517 33.4576 -0.267317 30.1808 0.133058C21.2538 1.22297 14.879 9.36396 15.9712 18.2723C16.0826 19.1953 16.2944 20.0962 16.5507 20.9748C16.7959 20.9304 17.0411 20.8747 17.2974 20.8414C21.187 20.3631 25.0876 21.0527 28.5759 22.8099V22.821Z" fill="#E1690D"/>
+                  <path d="M53.2061 39.3809C55.1785 33.4753 55.3569 26.7357 53.6406 20.2629L44.8696 22.5874C45.8952 26.4578 46.0178 30.4171 45.271 34.0315L29.0999 23.1212L28.6207 22.8432C28.6207 22.8432 28.5761 22.8209 28.5539 22.8098C25.0656 21.0526 21.165 20.363 17.2754 20.8413C17.019 20.8746 16.7849 20.9302 16.5286 20.9747C6.1751 22.643 -1.13589 32.2409 0.145765 42.7396C0.903608 48.9565 4.6372 54.4839 10.1204 57.5202C14.3888 59.7225 19.9685 60.7678 23.5164 60.7678C33.2792 60.7678 42.9084 55.952 49.0046 47.4662L57.4077 53.1382L62.4893 45.6424L53.195 39.3698L53.2061 39.3809ZM14.2774 49.468C11.4577 47.7997 9.53971 44.8856 9.13949 41.6385C8.42634 35.8332 12.5722 30.5392 18.3899 29.8274C20.4179 29.5828 22.4458 29.9164 24.2734 30.795L41.4929 42.4059C35.0959 51.103 23.5719 54.306 14.2774 49.468Z" fill="#0F83C6"/>
+                </svg>
+                <span class="service-card-logo-text">別荘投資</span>
+              </div>
+              <p class="service-card-description">バケーションレンタル物件の不動産売買を行います。</p>
+              <a href="#" class="service-card-footer">
+                <span class="service-card-footer-text">サービス概要</span>
+                <svg class="service-card-footer-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" fill="#14AF91"/>
+                  <path d="M10 8L14 12L10 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- スライド3: やど管理 -->
+          <div class="carousel-slide" data-index="2">
+            <div class="service-card">
+              <span class="service-card-badge badge-blue">運営管理・代行</span>
+              <div class="service-card-logo">
+                <svg class="service-card-logo-mark" viewBox="0 0 63 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M28.5759 22.821C26.6479 21.7422 25.2771 19.5846 24.9762 17.1824C24.4858 13.2231 27.3277 9.60862 31.2953 9.11926C32.7441 8.94131 33.5911 9.11926 35.352 9.77547C37.2244 10.5429 39.0409 11.9775 40.6124 13.9127L47.6669 8.22956C45.1148 5.08213 42.0166 2.70214 38.6954 1.36755L38.5728 1.32306C35.7309 0.266517 33.4576 -0.267317 30.1808 0.133058C21.2538 1.22297 14.879 9.36396 15.9712 18.2723C16.0826 19.1953 16.2944 20.0962 16.5507 20.9748C16.7959 20.9304 17.0411 20.8747 17.2974 20.8414C21.187 20.3631 25.0876 21.0527 28.5759 22.8099V22.821Z" fill="#E1690D"/>
+                  <path d="M53.2061 39.3809C55.1785 33.4753 55.3569 26.7357 53.6406 20.2629L44.8696 22.5874C45.8952 26.4578 46.0178 30.4171 45.271 34.0315L29.0999 23.1212L28.6207 22.8432C28.6207 22.8432 28.5761 22.8209 28.5539 22.8098C25.0656 21.0526 21.165 20.363 17.2754 20.8413C17.019 20.8746 16.7849 20.9302 16.5286 20.9747C6.1751 22.643 -1.13589 32.2409 0.145765 42.7396C0.903608 48.9565 4.6372 54.4839 10.1204 57.5202C14.3888 59.7225 19.9685 60.7678 23.5164 60.7678C33.2792 60.7678 42.9084 55.952 49.0046 47.4662L57.4077 53.1382L62.4893 45.6424L53.195 39.3698L53.2061 39.3809ZM14.2774 49.468C11.4577 47.7997 9.53971 44.8856 9.13949 41.6385C8.42634 35.8332 12.5722 30.5392 18.3899 29.8274C20.4179 29.5828 22.4458 29.9164 24.2734 30.795L41.4929 42.4059C35.0959 51.103 23.5719 54.306 14.2774 49.468Z" fill="#0F83C6"/>
+                </svg>
+                <span class="service-card-logo-text">やど管理</span>
+              </div>
+              <p class="service-card-description">バケーションレンタルの運営・管理を代行いたします。</p>
+              <a href="#" class="service-card-footer">
+                <span class="service-card-footer-text">サービス概要</span>
+                <svg class="service-card-footer-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" fill="#0F83C6"/>
+                  <path d="M10 8L14 12L10 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 下段: ワイドカード -->
+      <div class="service-card service-card-wide">
+        <span class="service-card-badge badge-red">立ち上げ・リノベーション支援</span>
+        <div class="service-card-content">
+          <div class="service-card-logo">
+            <svg class="service-card-logo-mark" viewBox="0 0 63 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M28.5759 22.821C26.6479 21.7422 25.2771 19.5846 24.9762 17.1824C24.4858 13.2231 27.3277 9.60862 31.2953 9.11926C32.7441 8.94131 33.5911 9.11926 35.352 9.77547C37.2244 10.5429 39.0409 11.9775 40.6124 13.9127L47.6669 8.22956C45.1148 5.08213 42.0166 2.70214 38.6954 1.36755L38.5728 1.32306C35.7309 0.266517 33.4576 -0.267317 30.1808 0.133058C21.2538 1.22297 14.879 9.36396 15.9712 18.2723C16.0826 19.1953 16.2944 20.0962 16.5507 20.9748C16.7959 20.9304 17.0411 20.8747 17.2974 20.8414C21.187 20.3631 25.0876 21.0527 28.5759 22.8099V22.821Z" fill="#E1690D"/>
+              <path d="M53.2061 39.3809C55.1785 33.4753 55.3569 26.7357 53.6406 20.2629L44.8696 22.5874C45.8952 26.4578 46.0178 30.4171 45.271 34.0315L29.0999 23.1212L28.6207 22.8432C28.6207 22.8432 28.5761 22.8209 28.5539 22.8098C25.0656 21.0526 21.165 20.363 17.2754 20.8413C17.019 20.8746 16.7849 20.9302 16.5286 20.9747C6.1751 22.643 -1.13589 32.2409 0.145765 42.7396C0.903608 48.9565 4.6372 54.4839 10.1204 57.5202C14.3888 59.7225 19.9685 60.7678 23.5164 60.7678C33.2792 60.7678 42.9084 55.952 49.0046 47.4662L57.4077 53.1382L62.4893 45.6424L53.195 39.3698L53.2061 39.3809ZM14.2774 49.468C11.4577 47.7997 9.53971 44.8856 9.13949 41.6385C8.42634 35.8332 12.5722 30.5392 18.3899 29.8274C20.4179 29.5828 22.4458 29.9164 24.2734 30.795L41.4929 42.4059C35.0959 51.103 23.5719 54.306 14.2774 49.468Z" fill="#0F83C6"/>
+            </svg>
+            <span class="service-card-logo-text">やど企画</span>
+          </div>
+          <p class="service-card-description">コンサルティングなどバケーションレンタルの立ち上げを支援します。</p>
+        </div>
+        <a href="#" class="service-card-footer">
+          <span class="service-card-footer-text">サービス概要</span>
+          <svg class="service-card-footer-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" fill="#E05353"/>
+            <path d="M10 8L14 12L10 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- CTAボタン -->
+    <a href="#" class="service-button">
+      <span>サービス一覧</span>
+      <svg class="service-button-arrow" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.16667 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const track = document.getElementById('carouselTrack');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const arrows = document.querySelectorAll('.flow-arrow');
+      const slideCount = slides.length;
+      const slideWidth = 360;
+      const slideGap = 60;
+      
+      let currentSlide = 0;
+      let autoplayInterval;
+      const autoplayDelay = 4000; // 4秒
+
+      // カルーセルを中央に配置するための初期オフセット計算
+      function getOffset(index) {
+        const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+        const totalSlideWidth = slideWidth + slideGap;
+        const centerOffset = (containerWidth - slideWidth) / 2;
+        return centerOffset - (index * totalSlideWidth);
+      }
+
+      // スライド移動
+      function goToSlide(index) {
+        if (index < 0) index = slideCount - 1;
+        if (index >= slideCount) index = 0;
+        
+        currentSlide = index;
+        const offset = getOffset(index);
+        track.style.transform = `translateX(${offset}px)`;
+        
+        // スライドのアクティブ状態を更新
+        slides.forEach((slide, i) => {
+          slide.style.opacity = i === index ? '1' : '0.5';
+          slide.style.transform = i === index ? 'scale(1)' : 'scale(0.9)';
+        });
+      }
+
+      // 次のスライドへ
+      function nextSlide() {
+        goToSlide(currentSlide + 1);
+      }
+
+      // 自動再生開始
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayInterval = setInterval(nextSlide, autoplayDelay);
+      }
+
+      // 自動再生停止
+      function stopAutoplay() {
+        if (autoplayInterval) {
+          clearInterval(autoplayInterval);
+        }
+      }
+
+      // 三角形クリックでスライド移動
+      arrows.forEach(arrow => {
+        arrow.addEventListener('click', function() {
+          const slideIndex = parseInt(this.getAttribute('data-slide'));
+          goToSlide(slideIndex);
+          startAutoplay(); // クリック後も自動再生継続
+        });
+      });
+
+      // カルーセルホバーで自動再生一時停止
+      const container = document.querySelector('.carousel-container');
+      container.addEventListener('mouseenter', stopAutoplay);
+      container.addEventListener('mouseleave', startAutoplay);
+
+      // スライドにトランジション追加
+      slides.forEach(slide => {
+        slide.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      });
+
+      // 初期化
+      goToSlide(0);
+      startAutoplay();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 920 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 188">
+<rect id="Rectangle 180" y="12" width="920" height="6" fill="url(#paint0_linear_768_7897)"/>
+<path id="Polygon 2" d="M478 15L455.5 27.9904V2.00962L478 15Z" fill="var(--fill-0, #FFDBB9)"/>
+<path id="Polygon 3" d="M593 15L578 23.6603V6.33975L593 15Z" fill="var(--fill-0, #FFDBB9)"/>
+<path id="Polygon 4" d="M343 15L328 23.6603V6.33975L343 15Z" fill="var(--fill-0, #FFDBB9)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_768_7897" x1="0" y1="15" x2="920" y2="15" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="0.519231" stop-color="#FBE8D6"/>
+<stop offset="1" stop-color="white"/>
+</linearGradient>
+</defs>
+</svg>

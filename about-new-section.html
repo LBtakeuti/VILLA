@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>& VILLA - ABOUT New</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pale-color: #fcf9f1;
+      --text-black: #222;
+      --fill-black: #101010;
+      --orange: #F5A623;
+      --blue: #2D9AD8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: white;
+      color: var(--text-black);
+    }
+
+    /* ========================================
+       IMAGE CAROUSEL SECTION
+    ======================================== */
+    .carousel-section {
+      position: relative;
+      width: 100%;
+      height: 640px;
+      overflow: hidden;
+      background: #f5f5f5;
+    }
+
+    .carousel-track {
+      display: flex;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      flex: 0 0 1200px;
+      width: 1200px;
+      height: 640px;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Carousel Navigation Buttons */
+    .carousel-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      padding: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .carousel-nav-btn:hover {
+      opacity: 0.8;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-nav-btn svg {
+      width: 60px;
+      height: 60px;
+    }
+
+    .carousel-prev {
+      left: 40px;
+    }
+
+    .carousel-next {
+      right: 40px;
+    }
+
+    /* ========================================
+       ABOUT SECTION
+    ======================================== */
+    .about-new-section {
+      background-color: white;
+      padding: 78px 0 0 0;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .about-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 80px;
+      line-height: 80px;
+      margin-bottom: 6px;
+    }
+
+    .about-subtitle {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      color: var(--text-black);
+    }
+
+    /* パンくずリスト */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+
+    .breadcrumb-dot {
+      width: 13px;
+      height: 13px;
+      background-color: var(--orange);
+      border-radius: 50%;
+    }
+
+    .breadcrumb-link {
+      font-size: 14px;
+      color: var(--text-black);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .breadcrumb-link:hover {
+      opacity: 0.7;
+    }
+
+    .breadcrumb-separator {
+      color: var(--text-black);
+      font-size: 14px;
+    }
+
+    /* コンテンツエリア */
+    .about-content {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 60px;
+      padding: 0 120px;
+      max-width: 1920px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      flex: 0 0 auto;
+      max-width: 577px;
+      padding-top: 152px;
+    }
+
+    .about-heading {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 36px;
+      margin-bottom: 40px;
+    }
+
+    .about-description {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 40px;
+      color: var(--text-black);
+    }
+
+    /* イラストエリア - コンポーネント化 */
+    .service-illustration {
+      flex: 0 0 585px;
+      width: 585px;
+      height: 585px;
+      position: relative;
+    }
+
+    /* 中央の大きい円 */
+    .center-circle {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      top: 98px;
+      left: 101px;
+      border-radius: 50%;
+      background-color: var(--orange);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 4px solid var(--orange);
+    }
+
+    .center-circle:hover {
+      background-color: white;
+      border-color: var(--orange);
+    }
+
+    .center-circle .logo-container {
+      width: 125px;
+      height: 166px;
+      position: relative;
+    }
+
+    .center-circle .logo-default {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .center-circle:hover .logo-default {
+      opacity: 0;
+    }
+
+    .center-circle .logo-default .logo-svg {
+      width: 125px;
+      height: auto;
+    }
+
+    .center-circle .logo-default .villa-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 6px;
+      margin-top: 8px;
+    }
+
+    .center-circle .logo-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .center-circle:hover .logo-hover {
+      opacity: 1;
+    }
+
+    .center-circle .logo-hover .logo-svg {
+      width: 125px;
+      height: auto;
+    }
+
+    .center-circle .logo-hover .villa-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text-black);
+      letter-spacing: 6px;
+      margin-top: 8px;
+    }
+
+    /* 小さい円（サービス） */
+    .service-circle {
+      position: absolute;
+      transition: transform 0.3s ease;
+    }
+
+    .service-circle:hover {
+      transform: scale(1.05);
+    }
+
+    .service-circle img {
+      width: 100%;
+      height: auto;
+    }
+
+    .service-top-left {
+      top: 71px;
+      left: 7px;
+      width: 250px;
+    }
+
+    .service-top-right {
+      top: 26px;
+      left: 320px;
+      width: 187px;
+    }
+
+    .service-bottom-right {
+      top: 280px;
+      left: 325px;
+      width: 257px;
+    }
+
+    .service-bottom-left {
+      top: 357px;
+      left: 87px;
+      width: 180px;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 1400px) {
+      .about-content {
+        padding: 0 60px;
+        gap: 40px;
+      }
+
+      .service-illustration {
+        transform: scale(0.85);
+        transform-origin: top right;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .about-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 40px;
+      }
+
+      .about-text {
+        padding-top: 0;
+        text-align: center;
+        max-width: 100%;
+      }
+
+      .service-illustration {
+        transform: scale(0.8);
+        transform-origin: top center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .carousel-section {
+        height: 400px;
+      }
+
+      .carousel-slide {
+        flex: 0 0 100vw;
+        height: 400px;
+      }
+
+      .about-title {
+        font-size: 48px;
+        line-height: 48px;
+      }
+
+      .about-heading {
+        font-size: 20px;
+        line-height: 28px;
+      }
+
+      .about-description {
+        font-size: 16px;
+        line-height: 32px;
+      }
+
+      .service-illustration {
+        transform: scale(0.55);
+        transform-origin: top center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- IMAGE CAROUSEL -->
+  <section class="carousel-section">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide">
+        <img src="assets/Rectangle 205.png" alt="施設画像1">
+      </div>
+      <div class="carousel-slide">
+        <img src="assets/Rectangle 206.png" alt="施設画像2">
+      </div>
+      <div class="carousel-slide">
+        <img src="assets/Rectangle 207.png" alt="施設画像3">
+      </div>
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <button class="carousel-nav-btn carousel-prev" id="carouselPrev" aria-label="前のスライド">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_prev)">
+          <mask id="mask0_prev" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="60" height="60">
+            <path d="M0 0H60V60H0V0Z" fill="white"/>
+          </mask>
+          <g mask="url(#mask0_prev)">
+            <g filter="url(#filter0_prev)">
+              <path d="M39 3L21 30L39 57" stroke="white" stroke-width="2"/>
+            </g>
+          </g>
+        </g>
+        <defs>
+          <filter id="filter0_prev" x="18.7979" y="0.445312" width="24.0342" height="59.1094" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="1"/>
+            <feGaussianBlur stdDeviation="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.161 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+          </filter>
+          <clipPath id="clip0_prev">
+            <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 60 0)"/>
+          </clipPath>
+        </defs>
+      </svg>
+    </button>
+    <button class="carousel-nav-btn carousel-next" id="carouselNext" aria-label="次のスライド">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_next)">
+          <mask id="mask0_next" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="60" height="60">
+            <path d="M60 0H0V60H60V0Z" fill="white"/>
+          </mask>
+          <g mask="url(#mask0_next)">
+            <g filter="url(#filter0_next)">
+              <path d="M21 3L39 30L21 57" stroke="white" stroke-width="2"/>
+            </g>
+          </g>
+        </g>
+        <defs>
+          <filter id="filter0_next" x="19.168" y="0.445312" width="24.0342" height="59.1094" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="1"/>
+            <feGaussianBlur stdDeviation="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.161 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+          </filter>
+          <clipPath id="clip0_next">
+            <rect width="60" height="60" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+    </button>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-new-section">
+    <header class="about-header">
+      <h2 class="about-title">ABOUT</h2>
+      <p class="about-subtitle">& VILLA について</p>
+    </header>
+
+    <nav class="breadcrumb">
+      <span class="breadcrumb-dot"></span>
+      <a href="#" class="breadcrumb-link">トップ</a>
+      <span class="breadcrumb-separator">―</span>
+      <a href="#" class="breadcrumb-link">&VILLAについて</a>
+    </nav>
+
+    <div class="about-content">
+      <div class="about-text">
+        <h3 class="about-heading">バケーションレンタルの<br>全領域をカバーする総合プラットフォーム</h3>
+        <p class="about-description">
+          バケーションレンタル運営に特化したトータルサポート企業として、オーナー様の資産価値向上と確かな利益を創出。<br><br>
+          単なる運営代行にとどまらず、施設の立ち上げから売却までを総合的に支援できることが最大の特徴です。
+        </p>
+      </div>
+
+      <!-- サービスイラスト（コンポーネント化） -->
+      <div class="service-illustration">
+        <!-- 中央の大きい円 -->
+        <div class="center-circle">
+          <div class="logo-container">
+            <div class="logo-default">
+              <svg class="logo-svg" viewBox="0 0 125 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M57.1519 45.642C53.2958 43.4844 50.5542 39.1692 49.9523 34.3647C48.9716 26.4462 54.6554 19.2172 62.5905 18.2385C65.4882 17.8826 67.1822 18.2385 70.7039 19.5509C74.4486 21.0856 78.0818 23.955 81.2246 27.8253L95.3339 16.4591C90.2296 10.1643 84.0331 5.40427 77.3908 2.7351L77.1456 2.64612C71.4618 0.533033 66.9147 -0.534634 60.3616 0.266116C42.5076 2.44594 29.758 18.7279 31.9424 36.5446C32.1652 38.3907 32.5888 40.1924 33.1014 41.9496C33.5918 41.8607 34.0822 41.7494 34.5948 41.6827C42.3739 40.7263 50.1752 42.1053 57.1519 45.6197V45.642Z" fill="white"/>
+                <path d="M106.412 78.7617C110.358 66.9506 110.714 53.4713 107.282 40.5259L89.7396 45.1747C91.7903 52.9153 92.0355 60.8338 90.5421 68.0628L58.1999 46.2424L57.2414 45.6863C57.2414 45.6863 57.1523 45.6418 57.1077 45.6195C50.131 42.1051 42.3297 40.7261 34.5506 41.6825C34.038 41.7492 33.5699 41.8605 33.0572 41.9494C12.3502 45.2859 -2.27177 64.4817 0.29153 85.4791C1.80722 97.913 9.27423 108.968 20.2407 115.04C28.7776 119.444 37.9386 121.535 47.0328 121.535C66.5585 121.535 85.8167 111.904 98.0091 94.9324L114.815 106.276L124.979 91.2846L106.39 78.7395L106.412 78.7617ZM28.5547 98.9362C22.9155 95.5997 19.0816 89.772 18.2792 83.277C16.8527 71.6662 25.1444 61.0785 36.7796 59.6549C40.8363 59.1656 44.893 59.8329 48.5485 61.5901L82.9859 84.8118C70.1917 102.206 47.1442 108.612 28.5547 98.9362Z" fill="white"/>
+              </svg>
+              <span class="villa-text">VILLA</span>
+            </div>
+            <div class="logo-hover">
+              <svg class="logo-svg" viewBox="0 0 125 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M57.1519 45.642C53.2958 43.4844 50.5542 39.1692 49.9523 34.3647C48.9716 26.4462 54.6554 19.2172 62.5905 18.2385C65.4882 17.8826 67.1822 18.2385 70.7039 19.5509C74.4486 21.0856 78.0818 23.955 81.2246 27.8253L95.3339 16.4591C90.2296 10.1643 84.0331 5.40427 77.3908 2.7351L77.1456 2.64612C71.4618 0.533033 66.9147 -0.534634 60.3616 0.266116C42.5076 2.44594 29.758 18.7279 31.9424 36.5446C32.1652 38.3907 32.5888 40.1924 33.1014 41.9496C33.5918 41.8607 34.0822 41.7494 34.5948 41.6827C42.3739 40.7263 50.1752 42.1053 57.1519 45.6197V45.642Z" fill="#E1690D"/>
+                <path d="M106.412 78.7617C110.358 66.9506 110.714 53.4713 107.282 40.5259L89.7396 45.1747C91.7903 52.9153 92.0355 60.8338 90.5421 68.0628L58.1999 46.2424L57.2414 45.6863C57.2414 45.6863 57.1523 45.6418 57.1077 45.6195C50.131 42.1051 42.3297 40.7261 34.5506 41.6825C34.038 41.7492 33.5699 41.8605 33.0572 41.9494C12.3502 45.2859 -2.27177 64.4817 0.29153 85.4791C1.80722 97.913 9.27423 108.968 20.2407 115.04C28.7776 119.444 37.9386 121.535 47.0328 121.535C66.5585 121.535 85.8167 111.904 98.0091 94.9324L114.815 106.276L124.979 91.2846L106.39 78.7395L106.412 78.7617ZM28.5547 98.9362C22.9155 95.5997 19.0816 89.772 18.2792 83.277C16.8527 71.6662 25.1444 61.0785 36.7796 59.6549C40.8363 59.1656 44.893 59.8329 48.5485 61.5901L82.9859 84.8118C70.1917 102.206 47.1442 108.612 28.5547 98.9362Z" fill="#0F83C6"/>
+              </svg>
+              <span class="villa-text">VILLA</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 小さい円（サービス） -->
+        <a href="#" class="service-circle service-top-left">
+          <img src="assets/service-investment.png" alt="別荘投資">
+        </a>
+        <a href="#" class="service-circle service-top-right">
+          <img src="assets/service-management.png" alt="やど管理・やど企画">
+        </a>
+        <a href="#" class="service-circle service-bottom-right">
+          <img src="assets/service-sauna.png" alt="サウナ宿・やど管理">
+        </a>
+        <a href="#" class="service-circle service-bottom-left">
+          <img src="assets/service-renovation.png" alt="リノベローン・やど企画">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 自動カルーセル（シームレス無限ループ、左右が見える）
+      const track = document.getElementById('carouselTrack');
+      const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+      const slideWidth = 1200;
+      const totalSlides = slides.length;
+      let currentIndex = 0;
+      
+      // 無限ループ用にクローンを追加（前後に全スライドを複製）
+      slides.forEach(slide => {
+        const clone = slide.cloneNode(true);
+        track.appendChild(clone);
+      });
+      slides.forEach(slide => {
+        const clone = slide.cloneNode(true);
+        track.insertBefore(clone, track.firstChild);
+      });
+      
+      // トラック幅設定
+      const allSlides = track.querySelectorAll('.carousel-slide');
+      track.style.width = `${allSlides.length * slideWidth}px`;
+      
+      // 中央配置（左右が見える）
+      function updatePosition(animate = true) {
+        const viewportWidth = window.innerWidth;
+        const centerOffset = (viewportWidth - slideWidth) / 2;
+        const translateX = -((currentIndex + totalSlides) * slideWidth) + centerOffset;
+        
+        if (animate) {
+          track.style.transition = 'transform 0.8s ease-in-out';
+        } else {
+          track.style.transition = 'none';
+        }
+        track.style.transform = `translateX(${translateX}px)`;
+      }
+      
+      updatePosition(false);
+      
+      let autoplayInterval;
+      
+      // 自動スライド
+      function nextSlide() {
+        currentIndex++;
+        updatePosition();
+        
+        // 最後のスライドに到達したらリセット
+        if (currentIndex >= totalSlides) {
+          setTimeout(() => {
+            currentIndex = 0;
+            updatePosition(false);
+          }, 800);
+        }
+      }
+      
+      // 前のスライド
+      function prevSlide() {
+        currentIndex--;
+        updatePosition();
+        
+        // 最初のスライドより前に行ったらリセット
+        if (currentIndex < 0) {
+          setTimeout(() => {
+            currentIndex = totalSlides - 1;
+            updatePosition(false);
+          }, 800);
+        }
+      }
+      
+      // 自動再生の開始・停止
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayInterval = setInterval(nextSlide, 4000);
+      }
+      
+      function stopAutoplay() {
+        if (autoplayInterval) {
+          clearInterval(autoplayInterval);
+        }
+      }
+      
+      // ナビゲーションボタンのイベントリスナー
+      const prevBtn = document.getElementById('carouselPrev');
+      const nextBtn = document.getElementById('carouselNext');
+      
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          prevSlide();
+          startAutoplay(); // ボタン操作後に自動再生を再開
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          nextSlide();
+          startAutoplay(); // ボタン操作後に自動再生を再開
+        });
+      }
+      
+      // 自動再生開始
+      startAutoplay();
+      
+      // リサイズ対応
+      window.addEventListener('resize', () => updatePosition(false));
+    });
+  </script>
+</body>
+</html>

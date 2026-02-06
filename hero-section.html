@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>& VILLA - Vacation Rentals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/modules/effect-coverflow/effect-coverflow.min.css">
+  <style>
+    :root {
+      --text-black: #222;
+      --pale-color: #fcf9f1;
+    }
+
+    *, *:before, *:after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: var(--pale-color);
+      color: var(--text-black);
+    }
+
+    .hero-section {
+      position: relative;
+      width: 100%;
+      background: #fff;
+    }
+
+    .hero-carousel-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: visible;
+    }
+
+    .swiper-container {
+      width: 100%;
+      min-height: 280px;
+      transition: opacity 0.6s ease;
+      perspective: 2000px;
+      perspective-origin: 50% 50%;
+      overflow: visible !important;
+    }
+
+
+    .swiper-container .swiper-wrapper {
+      transform-style: preserve-3d;
+      perspective-origin: 50% 50%;
+      overflow: visible !important;
+    }
+
+    .swiper-container.swiper-container-coverflow {
+      padding-top: 0;
+    }
+
+    .swiper-container.loading {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 55%;
+      max-width: 750px;
+      aspect-ratio: 3 / 2;
+      transform-style: preserve-3d;
+      will-change: transform;
+      overflow: visible;
+    }
+
+    .swiper-slide .slide-inner {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-size: cover;
+      transform-origin: center center;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform: scale(1);
+    }
+
+    .swiper-slide-active .slide-inner {
+      transform: scale(1.08);
+    }
+
+    .swiper-slide .entity-img {
+      display: none;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 44px;
+      height: 44px;
+      opacity: 0.85;
+      visibility: visible;
+      transition: all 0.3s ease;
+      color: #fff;
+      z-index: 10;
+    }
+
+    .swiper-button-prev {
+      transform: translateX(0);
+      left: 8px;
+    }
+
+    .swiper-button-next {
+      transform: translateX(0);
+      right: 8px;
+    }
+
+    .swiper-container:hover .swiper-button-prev,
+    .swiper-container:hover .swiper-button-next {
+      opacity: 1;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .swiper-button-white .swiper-button-prev::after,
+    .swiper-button-white .swiper-button-next::after {
+      color: #fff;
+    }
+
+    .swiper-pagination-bullet {
+      margin: 0 9px;
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
+      opacity: 0.4;
+      transition: all 0.3s ease;
+    }
+
+    .swiper-pagination-bullet:hover,
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+
+    /* デスクトップ大: 画像3:2比率（ワイヤーフレーム準拠 600×400） */
+    @media (min-width: 1281px) {
+      .hero-carousel-wrap {
+        max-width: 1200px;
+      }
+      .swiper-container {
+        height: 400px;
+      }
+      .swiper-slide {
+        width: 600px;
+        max-width: 600px;
+        aspect-ratio: 3 / 2;
+      }
+    }
+
+    /* デスクトップ中: 画像3:2比率 */
+    @media (min-width: 1024px) and (max-width: 1280px) {
+      .hero-carousel-wrap {
+        max-width: 1100px;
+      }
+      .swiper-container {
+        height: 367px;
+      }
+      .swiper-slide {
+        width: 550px;
+        max-width: 550px;
+        aspect-ratio: 3 / 2;
+      }
+    }
+
+    /* SP: 画像3:2比率 */
+    @media (max-width: 1023px) {
+      .hero-carousel-wrap {
+        max-width: 100%;
+      }
+      .swiper-container {
+        height: 60vw;
+        min-height: 280px;
+        max-height: 400px;
+      }
+      .swiper-container.swiper-container-coverflow {
+        padding-top: 0;
+      }
+      .swiper-slide {
+        width: 90%;
+        max-width: none;
+        aspect-ratio: 3 / 2;
+      }
+      .swiper-button-prev,
+      .swiper-button-next {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .swiper-container:hover .swiper-button-prev,
+      .swiper-container:hover .swiper-button-next {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-section">
+    <div class="hero-carousel-wrap">
+    <section class="swiper-container swiper-container-coverflow loading">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="slide-inner" style="background-image:url(assets/DJI_20241122080719_0186_D%204.png)"></div>
+          <img src="assets/DJI_20241122080719_0186_D%204.png" class="entity-img" alt="">
+        </div>
+        <div class="swiper-slide">
+          <div class="slide-inner" style="background-image:url(assets/DJI_20241122080719_0186_D%206.png)"></div>
+          <img src="assets/DJI_20241122080719_0186_D%206.png" class="entity-img" alt="">
+        </div>
+        <div class="swiper-slide">
+          <div class="slide-inner" style="background-image:url(assets/DJI_20241122080719_0186_D%209.png)"></div>
+          <img src="assets/DJI_20241122080719_0186_D%209.png" class="entity-img" alt="">
+        </div>
+        <div class="swiper-slide">
+          <div class="slide-inner" style="background-image:url(assets/DJI_20241122080719_0186_D%2011.png)"></div>
+          <img src="assets/DJI_20241122080719_0186_D%2011.png" class="entity-img" alt="">
+        </div>
+        <div class="swiper-slide">
+          <div class="slide-inner" style="background-image:url(assets/DJI_20241122080719_0186_D%2012.png)"></div>
+          <img src="assets/DJI_20241122080719_0186_D%2012.png" class="entity-img" alt="">
+        </div>
+      </div>
+
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev swiper-button-white"></div>
+      <div class="swiper-button-next swiper-button-white"></div>
+    </section>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const sliderSelector = '.swiper-container';
+    const options = {
+      init: false,
+      loop: true,
+      speed: 800,
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      spaceBetween: 80,
+      effect: 'coverflow',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 80,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      grabCursor: true,
+      parallax: true,
+      observer: true,
+      observeParents: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        1024: {
+          spaceBetween: 96,
+        },
+        1023: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 0,
+          },
+        },
+      },
+      on: {
+        init: function() {
+          this.el.classList.remove('loading');
+          setTimeout(() => fixActiveSlideRotation(this), 50);
+        },
+        slideChangeTransitionEnd: function() {
+          fixActiveSlideRotation(this);
+        },
+        resize: function() {
+          setTimeout(() => fixActiveSlideRotation(this), 100);
+        },
+      },
+    };
+
+    function fixActiveSlideRotation(swiper) {
+      if (swiper.params.effect !== 'coverflow') return;
+      swiper.slides.forEach((slide) => {
+        if (slide.classList.contains('swiper-slide-active')) {
+          let transform = slide.style.transform || '';
+          transform = transform.replace(/rotateY\([^)]+\)/g, 'rotateY(0deg)');
+          transform = transform.replace(/rotateX\([^)]+\)/g, 'rotateX(0deg)');
+          transform = transform.replace(/rotateZ\([^)]+\)/g, 'rotateZ(0deg)');
+          transform = transform.replace(/skewX\([^)]+\)/g, '');
+          transform = transform.replace(/skewY\([^)]+\)/g, '');
+          transform = transform.replace(/skew\([^)]+\)/g, '');
+          slide.style.transform = transform;
+        }
+      });
+    }
+
+    const mySwiper = new Swiper(sliderSelector, options);
+    mySwiper.init();
+
+    window.addEventListener('resize', () => {
+      if (mySwiper && mySwiper.params.effect === 'coverflow') {
+        setTimeout(() => fixActiveSlideRotation(mySwiper), 150);
+      }
+    });
+
+    var fixIntervalId = null;
+    function startContinuousFix() {
+      if (fixIntervalId) return;
+      if (window.innerWidth < 1024) return;
+      fixIntervalId = setInterval(function() {
+        if (mySwiper && mySwiper.params.effect === 'coverflow' && !mySwiper.animating) {
+          fixActiveSlideRotation(mySwiper);
+        }
+      }, 100);
+    }
+    function stopContinuousFix() {
+      if (fixIntervalId) {
+        clearInterval(fixIntervalId);
+        fixIntervalId = null;
+      }
+    }
+    if (window.innerWidth >= 1024) startContinuousFix();
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 1024) startContinuousFix();
+      else stopContinuousFix();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>& VILLA - Header</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-black: #222;
+      --orange: #E1690D;
+      --blue: #0F83C6;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: #fff;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      background-color: #fff;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-black);
+    }
+
+    .header-logo img {
+      display: block;
+      height: 25px;
+      width: auto;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .header-nav a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-black);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .header-nav a:hover {
+      opacity: 0.7;
+    }
+
+    .header-nav a.header-cta {
+      color: #fff;
+    }
+
+    .header-cta {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      background-color: var(--orange);
+      text-decoration: none;
+      border-radius: 9999px;
+      transition: opacity 0.2s;
+    }
+
+    .header-cta:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="/" class="header-logo" aria-label="& VILLA トップへ">
+      <img src="assets/header-logo.png" alt="＆VILLA">
+    </a>
+    <nav class="header-nav">
+      <a href="#">＆VILLAについて</a>
+      <a href="#">サービス</a>
+      <a href="#">お問い合わせ</a>
+      <a href="#" class="header-cta">お問い合わせ</a>
+    </nav>
+  </header>
+  <!-- ヘッダーコンポーネント（Figma node-id=752-4819）全ページ共通 -->
+</body>
+</html>

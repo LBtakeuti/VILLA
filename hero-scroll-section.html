@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>& VILLA - Vacation Rentals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-black: #222;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: #fff;
+      color: var(--text-black);
+    }
+
+    /* ========== スムーズスクロール用 ========== */
+    .smooth-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .smooth-content {
+      will-change: transform;
+    }
+
+    /* ========== Figma 803:5022 完全準拠 ========== */
+    .hero-scroll-section {
+      position: relative;
+      width: 100%;
+      max-width: 1920px;
+      margin: 0 auto;
+      min-height: 1715px;
+      background: #fff;
+    }
+
+    /* テキスト: Figma Group 184 */
+    .hero-scroll-copy {
+      position: absolute;
+      top: 0;
+      left: 362px;
+      width: 981px;
+      z-index: 10;
+      will-change: transform;
+    }
+
+    .hero-scroll-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 110px;
+      line-height: 130px;
+      color: var(--text-black);
+    }
+
+    .hero-scroll-caption {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 60px;
+      color: var(--text-black);
+      margin-top: 10px;
+    }
+
+    /* 画像コンテナ */
+    .hero-scroll-images {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-scroll-img {
+      position: absolute;
+      overflow: hidden;
+      will-change: transform, opacity;
+    }
+
+    .hero-scroll-img img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 
+     * Figma座標 (フレーム1921x1715px):
+     * D10: x=1079.53, y=134, w=568.43, h=387
+     * D5:  x=1532.33, y=479, w=388.67, h=265
+     * D6:  x=1178.64, y=861, w=291.50, h=198
+     * D7:  x=1079.53, y=1190, w=680.17, h=463
+     * D9:  x=-13, y=622, w=400, h=265
+     * D11: x=170, y=1299, w=300, h=200
+     */
+
+    /* D10: 右上（大） */
+    .hero-scroll-img.img-d10 {
+      left: 1079px;
+      top: 134px;
+      width: 568px;
+      height: 387px;
+    }
+
+    /* D5: 右端中段 */
+    .hero-scroll-img.img-d5 {
+      left: 1532px;
+      top: 479px;
+      width: 389px;
+      height: 265px;
+    }
+
+    /* D6: 右中（小） */
+    .hero-scroll-img.img-d6 {
+      left: 1179px;
+      top: 861px;
+      width: 292px;
+      height: 198px;
+    }
+
+    /* D7: 右下（大） */
+    .hero-scroll-img.img-d7 {
+      left: 1080px;
+      top: 1190px;
+      width: 680px;
+      height: 463px;
+    }
+
+    /* D9: 左上 */
+    .hero-scroll-img.img-d9 {
+      left: -13px;
+      top: 622px;
+      width: 400px;
+      height: 265px;
+    }
+
+    /* D11: 左下 */
+    .hero-scroll-img.img-d11 {
+      left: 170px;
+      top: 1299px;
+      width: 300px;
+      height: 200px;
+    }
+
+    /* レスポンシブ: 1400px以下でスケール */
+    @media (max-width: 1920px) {
+      .hero-scroll-section {
+        max-width: 100%;
+        min-height: auto;
+        aspect-ratio: 1921 / 1715;
+      }
+
+      .hero-scroll-copy {
+        left: 18.85%;
+        width: auto;
+      }
+
+      .hero-scroll-title {
+        font-size: clamp(32px, 5.7vw, 110px);
+        line-height: 1.18;
+        white-space: pre-line;
+      }
+
+      .hero-scroll-caption {
+        font-size: clamp(14px, 1.35vw, 26px);
+        line-height: 2.3;
+      }
+
+      .hero-scroll-img.img-d10 {
+        left: 56.2%;
+        top: 7.8%;
+        width: 29.6%;
+        height: auto;
+        aspect-ratio: 568.43 / 387;
+      }
+
+      .hero-scroll-img.img-d5 {
+        left: 79.8%;
+        top: 27.9%;
+        width: 20.2%;
+        height: auto;
+        aspect-ratio: 388.67 / 265;
+      }
+
+      .hero-scroll-img.img-d6 {
+        left: 61.4%;
+        top: 50.2%;
+        width: 15.2%;
+        height: auto;
+        aspect-ratio: 291.5 / 198;
+      }
+
+      .hero-scroll-img.img-d7 {
+        left: 56.2%;
+        top: 69.4%;
+        width: 35.4%;
+        height: auto;
+        aspect-ratio: 680.17 / 463;
+      }
+
+      .hero-scroll-img.img-d9 {
+        left: -0.7%;
+        top: 36.3%;
+        width: 20.8%;
+        height: auto;
+        aspect-ratio: 400 / 265;
+      }
+
+      .hero-scroll-img.img-d11 {
+        left: 8.8%;
+        top: 75.7%;
+        width: 15.6%;
+        height: auto;
+        aspect-ratio: 300 / 200;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-scroll-section {
+        aspect-ratio: auto;
+        min-height: 600px;
+        padding: 40px 20px;
+      }
+
+      .hero-scroll-copy {
+        position: relative;
+        left: 0;
+        width: 100%;
+        margin-bottom: 40px;
+      }
+
+      .hero-scroll-title {
+        font-size: 32px;
+        line-height: 1.2;
+      }
+
+      .hero-scroll-caption {
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .hero-scroll-images {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        height: auto;
+      }
+
+      .hero-scroll-img {
+        position: relative;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 3 / 2 !important;
+      }
+    }
+
+    /* スクロール用スペーサー */
+    .scroll-spacer {
+      height: 400px;
+      background: #fff;
+    }
+
+    /* アクセシビリティ */
+    @media (prefers-reduced-motion: reduce) {
+      .smooth-wrapper {
+        position: relative !important;
+      }
+      .smooth-content {
+        transform: none !important;
+      }
+      [data-parallax-speed] {
+        transform: none !important;
+      }
+      [data-fade] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="smooth-wrapper">
+    <div class="smooth-content">
+      <!-- Figma 803:5022 完全再現 -->
+      <section class="hero-scroll-section">
+    <!-- テキスト: Figma座標 x=362, y=0 -->
+    <div class="hero-scroll-copy" data-fade data-fade-delay="0">
+      <h1 class="hero-scroll-title">Vacation Rentals.
+All in One.</h1>
+      <p class="hero-scroll-caption">バケーションレンタルのすべてを、ひとつに</p>
+    </div>
+
+    <!-- 画像6枚: Figma座標完全準拠 -->
+    <div class="hero-scroll-images">
+      <!-- D10: 5e6d8cd8 -->
+      <div class="hero-scroll-img img-d10" data-parallax-speed="0.15" data-fade data-fade-delay="0">
+        <img src="assets/hero-scroll/5e6d8cd86da28f189afd85dfdabe16f33d198d86.png" alt="">
+      </div>
+      <!-- D5: a438ad73 -->
+      <div class="hero-scroll-img img-d5" data-parallax-speed="-0.1" data-fade data-fade-delay="0.1">
+        <img src="assets/hero-scroll/a438ad739dd7344020e3eb7a3b327a40e97df92b.png" alt="">
+      </div>
+      <!-- D6: 3a0ede27 -->
+      <div class="hero-scroll-img img-d6" data-parallax-speed="0.2" data-fade data-fade-delay="0.15">
+        <img src="assets/hero-scroll/3a0ede2778c01538480174c62be301239d5f133e.png" alt="">
+      </div>
+      <!-- D7: 65faff0f -->
+      <div class="hero-scroll-img img-d7" data-parallax-speed="-0.15" data-fade data-fade-delay="0.2">
+        <img src="assets/hero-scroll/65faff0f1c9da35d98b95c3b22d94948f9610d9b.png" alt="">
+      </div>
+      <!-- D9: eccf6c60 -->
+      <div class="hero-scroll-img img-d9" data-parallax-speed="0.25" data-fade data-fade-delay="0.1">
+        <img src="assets/hero-scroll/eccf6c60a7ccd72982e5ffc07d5f9a781f5e1cb3.png" alt="">
+      </div>
+      <!-- D11: bf6338f6 -->
+      <div class="hero-scroll-img img-d11" data-parallax-speed="-0.2" data-fade data-fade-delay="0.25">
+        <img src="assets/hero-scroll/bf6338f6fcc075c42650ed7be637b4a2180061a1.png" alt="">
+      </div>
+    </div>
+      </section>
+
+      <div class="scroll-spacer"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReducedMotion) {
+        document.body.style.height = 'auto';
+        document.querySelector('.smooth-wrapper').style.position = 'relative';
+        return;
+      }
+
+      const isMobile = window.innerWidth <= 768;
+
+      // 1. スムーズスクロール（慣性）- モバイルでは無効
+      class SmoothScroll {
+        constructor() {
+          this.wrapper = document.querySelector('.smooth-wrapper');
+          this.content = document.querySelector('.smooth-content');
+          this.scrollY = 0;
+          this.currentY = 0;
+          this.ease = 0.1;
+          this.isMobile = isMobile;
+          this.init();
+        }
+
+        init() {
+          if (this.isMobile) {
+            this.wrapper.style.position = 'relative';
+            return;
+          }
+          this.updateHeight();
+          this.wrapper.style.position = 'fixed';
+          this.wrapper.style.top = '0';
+          this.wrapper.style.left = '0';
+          this.wrapper.style.width = '100%';
+          this.wrapper.style.height = '100%';
+          this.wrapper.style.overflow = 'hidden';
+
+          window.addEventListener('scroll', () => {
+            this.scrollY = window.scrollY;
+          }, { passive: true });
+          window.addEventListener('resize', () => this.updateHeight());
+
+          this.render();
+        }
+
+        updateHeight() {
+          document.body.style.height = `${this.content.scrollHeight}px`;
+        }
+
+        render() {
+          this.currentY += (this.scrollY - this.currentY) * this.ease;
+          const roundedY = Math.round(this.currentY * 100) / 100;
+          this.content.style.transform = `translate3d(0, ${-roundedY}px, 0)`;
+          requestAnimationFrame(() => this.render());
+        }
+      }
+
+      // 2. パララックスギャラリー
+      class ParallaxGallery {
+        constructor() {
+          this.images = document.querySelectorAll('[data-parallax-speed]');
+          this.ticking = false;
+          window.addEventListener('scroll', () => this.onScroll(), { passive: true });
+          this.update();
+        }
+
+        onScroll() {
+          if (!this.ticking) {
+            requestAnimationFrame(() => {
+              this.update();
+              this.ticking = false;
+            });
+            this.ticking = true;
+          }
+        }
+
+        update() {
+          const windowHeight = window.innerHeight;
+          this.images.forEach(img => {
+            if (!img.classList.contains('fade-in-done')) return;
+            const rect = img.getBoundingClientRect();
+            const speed = parseFloat(img.dataset.parallaxSpeed) || 0;
+            if (rect.bottom < 0 || rect.top > windowHeight) return;
+            const elementCenter = rect.top + rect.height / 2;
+            const viewportCenter = windowHeight / 2;
+            const distance = elementCenter - viewportCenter;
+            const translateY = distance * speed * 0.3;
+            img.style.transform = `translate3d(0, ${translateY}px, 0)`;
+          });
+        }
+      }
+
+      // 3. フェードイン・フェードアウト
+      class FadeInOut {
+        constructor() {
+          this.elements = document.querySelectorAll('[data-fade]');
+          this.ticking = false;
+          this.init();
+        }
+
+        init() {
+          // 初期状態を設定
+          this.elements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            const delay = el.dataset.fadeDelay || 0;
+            el.style.transitionDelay = `${delay}s`;
+          });
+
+          // スクロールイベントで監視
+          window.addEventListener('scroll', () => this.onScroll(), { passive: true });
+          
+          // 初回チェック
+          this.update();
+        }
+
+        onScroll() {
+          if (!this.ticking) {
+            requestAnimationFrame(() => {
+              this.update();
+              this.ticking = false;
+            });
+            this.ticking = true;
+          }
+        }
+
+        update() {
+          const windowHeight = window.innerHeight;
+          const fadeInThreshold = windowHeight * 0.85;  // 下から15%の位置で開始
+          const fadeOutThreshold = windowHeight * 0.1;  // 上から10%で消え始める
+
+          this.elements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const elementTop = rect.top;
+            const elementBottom = rect.bottom;
+
+            // フェードイン: 要素が画面下部に入ってきた
+            if (elementTop < fadeInThreshold && elementBottom > fadeOutThreshold) {
+              // 可視範囲内
+              if (!el.classList.contains('is-visible')) {
+                el.style.transitionDelay = el.dataset.fadeDelay || '0s';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+                el.classList.add('is-visible');
+                
+                // パララックス用のクラスを追加
+                el.addEventListener('transitionend', () => {
+                  el.classList.add('fade-in-done');
+                }, { once: true });
+              }
+            } 
+            // フェードアウト: 要素が画面上部から出ていく
+            else if (elementBottom < fadeOutThreshold) {
+              if (el.classList.contains('is-visible')) {
+                el.style.transitionDelay = '0s';
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(-30px)';
+                el.classList.remove('is-visible');
+                el.classList.remove('fade-in-done');
+              }
+            }
+            // フェードアウト: 要素がまだ画面下にある（リセット用）
+            else if (elementTop > fadeInThreshold) {
+              if (el.classList.contains('is-visible')) {
+                el.style.transitionDelay = '0s';
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(50px)';
+                el.classList.remove('is-visible');
+                el.classList.remove('fade-in-done');
+              }
+            }
+          });
+        }
+      }
+
+      // 4. テキスト追従（hero-scroll-copy）
+      class StickyText {
+        constructor() {
+          this.copy = document.querySelector('.hero-scroll-copy');
+          this.section = document.querySelector('.hero-scroll-section');
+          if (!this.copy || !this.section) return;
+          
+          this.ticking = false;
+          this.stickyTop = 120;
+          this.init();
+        }
+
+        init() {
+          this.originalTop = this.copy.offsetTop;
+          window.addEventListener('scroll', () => this.onScroll(), { passive: true });
+          this.update();
+        }
+
+        onScroll() {
+          if (!this.ticking) {
+            requestAnimationFrame(() => {
+              this.update();
+              this.ticking = false;
+            });
+            this.ticking = true;
+          }
+        }
+
+        update() {
+          const sectionRect = this.section.getBoundingClientRect();
+          const copyHeight = this.copy.offsetHeight;
+          
+          if (sectionRect.top < this.stickyTop && sectionRect.bottom > copyHeight + this.stickyTop) {
+            const translateY = this.stickyTop - sectionRect.top;
+            this.copy.style.transform = `translateY(${translateY}px)`;
+          } else if (sectionRect.bottom <= copyHeight + this.stickyTop) {
+            const maxTranslate = sectionRect.height - copyHeight - this.originalTop;
+            this.copy.style.transform = `translateY(${maxTranslate}px)`;
+          } else {
+            this.copy.style.transform = 'translateY(0)';
+          }
+        }
+      }
+
+      new SmoothScroll();
+      new ParallaxGallery();
+      new FadeInOut();
+      new StickyText();
+    });
+  </script>
+</body>
+</html>

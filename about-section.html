@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>& VILLA - ABOUT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pale-color: #fcf9f1;
+      --text-black: #222;
+      --fill-black: #101010;
+      --orange: #F5A623;
+      --blue: #2D9AD8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: var(--pale-color);
+      color: var(--text-black);
+    }
+
+    .about-section {
+      padding: 80px 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .about-header {
+      margin-bottom: 60px;
+    }
+
+    .about-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 80px;
+      line-height: 80px;
+      margin-bottom: 5px;
+    }
+
+    .about-subtitle {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    .about-content {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .about-text {
+      flex: 1 1 500px;
+      max-width: 585px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .about-heading {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+    .about-heading p {
+      margin-bottom: 8px;
+    }
+
+    .about-description {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .about-description-text {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 40px;
+    }
+
+    .about-description-text p {
+      margin-bottom: 8px;
+    }
+
+    .about-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 300px;
+      height: 60px;
+      background-color: var(--fill-black);
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      font-size: 16px;
+      position: relative;
+      transition: opacity 0.3s ease;
+    }
+
+    .about-button:hover {
+      opacity: 0.85;
+    }
+
+    .about-button-text {
+      line-height: 15px;
+    }
+
+    .about-button-arrow {
+      position: absolute;
+      right: 25px;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* イラストエリア - Figmaから取得: 585x585px */
+    .about-illustration {
+      flex: 0 0 585px;
+      width: 585px;
+      height: 585px;
+      position: relative;
+    }
+
+    /* 中央の大きい円 - Figmaから取得: x=101, y=98, 400x400px */
+    .center-circle {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      top: 98px;
+      left: 101px;
+      border-radius: 50%;
+      background-color: var(--orange);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 4px solid var(--orange);
+    }
+
+    .center-circle:hover {
+      background-color: white;
+      border-color: var(--orange);
+    }
+
+    /* ロゴコンテナ（ホバー前後で同じサイズ） */
+    .center-circle .logo-container {
+      width: 125px;
+      height: 166px;
+      position: relative;
+    }
+
+    /* ホバー前のロゴ */
+    .center-circle .logo-default {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .center-circle:hover .logo-default {
+      opacity: 0;
+    }
+
+    .center-circle .logo-default .logo-svg {
+      width: 125px;
+      height: auto;
+    }
+
+    .center-circle .logo-default .villa-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 6px;
+      margin-top: 8px;
+    }
+
+    /* ホバー後のロゴ */
+    .center-circle .logo-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .center-circle:hover .logo-hover {
+      opacity: 1;
+    }
+
+    .center-circle .logo-hover .logo-svg {
+      width: 125px;
+      height: auto;
+    }
+
+    .center-circle .logo-hover .villa-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text-black);
+      letter-spacing: 6px;
+      margin-top: 8px;
+    }
+
+    /* 小さい円（サービス） - Figmaから取得したサイズ: 180x180px相当 */
+    .service-circle {
+      position: absolute;
+      transition: transform 0.3s ease;
+    }
+
+    .service-circle:hover {
+      transform: scale(1.05);
+    }
+
+    .service-circle img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* 各サービスの位置（時計回り：左上→右上→右下→左下） */
+    /* 全体: 585x585px */
+    /* 画像は2xなので、表示サイズは実際のピクセルの半分 */
+    
+    /* 左上: Group 115 (別荘投資) - 501x442px → 表示: 250x221px */
+    .service-top-left {
+      top: 71px;
+      left: 7px;
+      width: 250px;
+    }
+
+    /* 右上: Group 94 (やど管理・やど企画) - 374x412px → 表示: 187x206px */
+    .service-top-right {
+      top: 26px;
+      left: 320px;
+      width: 187px;
+    }
+
+    /* 右下: Group 114 (サウナ宿) - 513x446px → 表示: 257x223px */
+    .service-bottom-right {
+      top: 280px;
+      left: 325px;
+      width: 257px;
+    }
+
+    /* 左下: Group 113 (リノベローン) - 360x402px → 表示: 180x201px */
+    .service-bottom-left {
+      top: 357px;
+      left: 87px;
+      width: 180px;
+    }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 1600px) {
+      .about-section {
+        padding: 80px 100px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .about-section {
+        padding: 60px 40px;
+      }
+
+      .about-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-text {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 585px;
+      }
+
+      .about-illustration {
+        flex: 0 0 auto;
+        width: 585px;
+        height: 585px;
+        transform: scale(0.9);
+        transform-origin: top center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-title {
+        font-size: 48px;
+        line-height: 48px;
+      }
+
+      .about-heading {
+        font-size: 20px;
+        line-height: 28px;
+      }
+
+      .about-description-text {
+        font-size: 16px;
+        line-height: 32px;
+      }
+
+      .about-button {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .about-illustration {
+        transform: scale(0.6);
+        transform-origin: top center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="about-section">
+    <header class="about-header">
+      <h2 class="about-title">ABOUT</h2>
+      <p class="about-subtitle">& VILLA について</p>
+    </header>
+
+    <div class="about-content">
+      <div class="about-text">
+        <div class="about-heading">
+          <p>バケーションレンタルの</p>
+          <p>全領域をカバーする総合プラットフォーム</p>
+        </div>
+        
+        <div class="about-description">
+          <div class="about-description-text">
+            <p>バケーションレンタル運営に特化したトータルサポート企業として、オーナー様の資産価値向上と確かな利益を創出。</p>
+            <p>単なる運営代行にとどまらず、施設の立ち上げから売却までを総合的に支援します。</p>
+          </div>
+          
+          <a href="#" class="about-button">
+            <span class="about-button-text">& VILLA について</span>
+            <svg class="about-button-arrow" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.16667 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="about-illustration">
+        <!-- 中央の大きい円 -->
+        <div class="center-circle">
+          <div class="logo-container">
+            <!-- ホバー前のロゴ（白） -->
+            <div class="logo-default">
+              <svg class="logo-svg" viewBox="0 0 125 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M57.1519 45.642C53.2958 43.4844 50.5542 39.1692 49.9523 34.3647C48.9716 26.4462 54.6554 19.2172 62.5905 18.2385C65.4882 17.8826 67.1822 18.2385 70.7039 19.5509C74.4486 21.0856 78.0818 23.955 81.2246 27.8253L95.3339 16.4591C90.2296 10.1643 84.0331 5.40427 77.3908 2.7351L77.1456 2.64612C71.4618 0.533033 66.9147 -0.534634 60.3616 0.266116C42.5076 2.44594 29.758 18.7279 31.9424 36.5446C32.1652 38.3907 32.5888 40.1924 33.1014 41.9496C33.5918 41.8607 34.0822 41.7494 34.5948 41.6827C42.3739 40.7263 50.1752 42.1053 57.1519 45.6197V45.642Z" fill="white"/>
+                <path d="M106.412 78.7617C110.358 66.9506 110.714 53.4713 107.282 40.5259L89.7396 45.1747C91.7903 52.9153 92.0355 60.8338 90.5421 68.0628L58.1999 46.2424L57.2414 45.6863C57.2414 45.6863 57.1523 45.6418 57.1077 45.6195C50.131 42.1051 42.3297 40.7261 34.5506 41.6825C34.038 41.7492 33.5699 41.8605 33.0572 41.9494C12.3502 45.2859 -2.27177 64.4817 0.29153 85.4791C1.80722 97.913 9.27423 108.968 20.2407 115.04C28.7776 119.444 37.9386 121.535 47.0328 121.535C66.5585 121.535 85.8167 111.904 98.0091 94.9324L114.815 106.276L124.979 91.2846L106.39 78.7395L106.412 78.7617ZM28.5547 98.9362C22.9155 95.5997 19.0816 89.772 18.2792 83.277C16.8527 71.6662 25.1444 61.0785 36.7796 59.6549C40.8363 59.1656 44.893 59.8329 48.5485 61.5901L82.9859 84.8118C70.1917 102.206 47.1442 108.612 28.5547 98.9362Z" fill="white"/>
+              </svg>
+              <span class="villa-text">VILLA</span>
+            </div>
+            <!-- ホバー後のロゴ（カラー） -->
+            <div class="logo-hover">
+              <svg class="logo-svg" viewBox="0 0 125 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M57.1519 45.642C53.2958 43.4844 50.5542 39.1692 49.9523 34.3647C48.9716 26.4462 54.6554 19.2172 62.5905 18.2385C65.4882 17.8826 67.1822 18.2385 70.7039 19.5509C74.4486 21.0856 78.0818 23.955 81.2246 27.8253L95.3339 16.4591C90.2296 10.1643 84.0331 5.40427 77.3908 2.7351L77.1456 2.64612C71.4618 0.533033 66.9147 -0.534634 60.3616 0.266116C42.5076 2.44594 29.758 18.7279 31.9424 36.5446C32.1652 38.3907 32.5888 40.1924 33.1014 41.9496C33.5918 41.8607 34.0822 41.7494 34.5948 41.6827C42.3739 40.7263 50.1752 42.1053 57.1519 45.6197V45.642Z" fill="#E1690D"/>
+                <path d="M106.412 78.7617C110.358 66.9506 110.714 53.4713 107.282 40.5259L89.7396 45.1747C91.7903 52.9153 92.0355 60.8338 90.5421 68.0628L58.1999 46.2424L57.2414 45.6863C57.2414 45.6863 57.1523 45.6418 57.1077 45.6195C50.131 42.1051 42.3297 40.7261 34.5506 41.6825C34.038 41.7492 33.5699 41.8605 33.0572 41.9494C12.3502 45.2859 -2.27177 64.4817 0.29153 85.4791C1.80722 97.913 9.27423 108.968 20.2407 115.04C28.7776 119.444 37.9386 121.535 47.0328 121.535C66.5585 121.535 85.8167 111.904 98.0091 94.9324L114.815 106.276L124.979 91.2846L106.39 78.7395L106.412 78.7617ZM28.5547 98.9362C22.9155 95.5997 19.0816 89.772 18.2792 83.277C16.8527 71.6662 25.1444 61.0785 36.7796 59.6549C40.8363 59.1656 44.893 59.8329 48.5485 61.5901L82.9859 84.8118C70.1917 102.206 47.1442 108.612 28.5547 98.9362Z" fill="#0F83C6"/>
+              </svg>
+              <span class="villa-text">VILLA</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 小さい円（サービス）- PNG画像 -->
+        <!-- 時計回り：左上→右上→右下→左下 -->
+        
+        <!-- 左上: 別荘投資 -->
+        <a href="#" class="service-circle service-top-left">
+          <img src="assets/service-investment.png" alt="別荘投資 - バケレンを売りたい・買いたい">
+        </a>
+        
+        <!-- 右上: やど管理・やど企画 -->
+        <a href="#" class="service-circle service-top-right">
+          <img src="assets/service-management.png" alt="やど管理・やど企画 - バケレンを始めたい">
+        </a>
+        
+        <!-- 右下: サウナ宿 -->
+        <a href="#" class="service-circle service-bottom-right">
+          <img src="assets/service-sauna.png" alt="サウナ宿・やど管理 - バケレンに泊まりたい・広めたい">
+        </a>
+        
+        <!-- 左下: リノベローン -->
+        <a href="#" class="service-circle service-bottom-left">
+          <img src="assets/service-renovation.png" alt="リノベローン・やど企画 - バケレンの価値を高めたい">
+        </a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
