@@ -50,6 +50,11 @@
     /* ========================================
        HEADER
     ======================================== */
+    .mooth-wrapper,
+    .mooth-content {
+      background-color: transparent !important;
+    }
+
     .header {
       position: sticky;
       top: 0;
@@ -61,7 +66,7 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px 40px;
-      background-color: #fff;
+      background-color: transparent;
     }
 
     .header-logo {
@@ -124,6 +129,7 @@
       height: 640px;
       overflow: hidden;
       background: #f5f5f5;
+      margin-top: 40px;
     }
 
     .about-carousel-track {
@@ -409,7 +415,7 @@
       width: 1440px;
       min-height: 2400px;
       margin: 0 auto;
-      background-image: url('Frame 651.png');
+      background-image: url('src/assets/images/Frame 651.png');
       background-repeat: no-repeat;
       background-position: top center;
       background-size: 1440px auto;
@@ -1344,7 +1350,7 @@
   ======================================== -->
   <header class="header">
   <a href="top.html" class="header-logo" aria-label="& VILLA トップへ">
-    <img src="assets/header-logo.png" alt="＆VILLA">
+    <img src="src/assets/images/header-logo.png" alt="＆VILLA">
   </a>
   <nav class="header-nav">
     <a href="index.html">＆VILLAについて</a>
@@ -1360,13 +1366,13 @@
   <section class="carousel-section">
     <div class="about-carousel-track" id="aboutCarouselTrack">
       <div class="about-carousel-slide">
-        <img src="assets/Rectangle 205.png" alt="施設画像1">
+        <img src="src/assets/photos/Rectangle 205.png" alt="施設画像1">
       </div>
       <div class="about-carousel-slide">
-        <img src="assets/Rectangle 206.png" alt="施設画像2">
+        <img src="src/assets/photos/Rectangle 206.png" alt="施設画像2">
       </div>
       <div class="about-carousel-slide">
-        <img src="assets/Rectangle 207.png" alt="施設画像3">
+        <img src="src/assets/photos/Rectangle 207.png" alt="施設画像3">
       </div>
     </div>
     
@@ -1475,16 +1481,16 @@
         </div>
 
         <a href="#" class="service-circle service-top-left">
-          <img src="assets/service-investment.png" alt="別荘投資">
+          <img src="src/assets/images/service-investment.png" alt="別荘投資">
         </a>
         <a href="#" class="service-circle service-top-right">
-          <img src="assets/service-management.png" alt="やど管理・やど企画">
+          <img src="src/assets/images/service-management.png" alt="やど管理・やど企画">
         </a>
         <a href="#" class="service-circle service-bottom-right">
-          <img src="assets/service-sauna.png" alt="サウナ宿・やど管理">
+          <img src="src/assets/images/service-sauna.png" alt="サウナ宿・やど管理">
         </a>
         <a href="#" class="service-circle service-bottom-left">
-          <img src="assets/service-renovation.png" alt="リノベローン・やど企画">
+          <img src="src/assets/images/service-renovation.png" alt="リノベローン・やど企画">
         </a>
       </div>
     </div>
@@ -1513,7 +1519,7 @@
             </div>
             <h3 class="strengths-card-title">豊富な実績</h3>
             <div class="strengths-card-illustration">
-              <img src="houhunajisseki.svg" alt="豊富な実績イラスト">
+              <img src="src/assets/icons/houhunajisseki.svg" alt="豊富な実績イラスト">
             </div>
             <p class="strengths-card-desc">別荘シリーズ「COCO VILLA」の運営実績を活かし、お客様の物件価値を最大化するノウハウを提供します。</p>
           </div>
@@ -1526,7 +1532,7 @@
             </div>
             <h3 class="strengths-card-title">価値を最大限に高める仕組み</h3>
             <div class="strengths-card-illustration">
-              <img src="kati-sikumi.svg" alt="価値を最大限に高める仕組みイラスト">
+              <img src="src/assets/icons/kati-sikumi.svg" alt="価値を最大限に高める仕組みイラスト">
             </div>
             <p class="strengths-card-desc">売買から開業、運営管理まで一貫したサポート体制で、物件の価値を最大限に引き出します。</p>
           </div>
@@ -1539,7 +1545,7 @@
             </div>
             <h3 class="strengths-card-title">豊富な実績</h3>
             <div class="strengths-card-illustration">
-              <img src="jisseki.svg" alt="豊富な実績イラスト">
+              <img src="src/assets/icons/jisseki.svg" alt="豊富な実績イラスト">
             </div>
             <p class="strengths-card-desc">不動産・集客・運営の各分野に精通した専門家が、お客様のニーズに合わせた最適なプランを提案します。</p>
           </div>
@@ -1665,7 +1671,7 @@
 
         <div class="operating-company-white-block">
           <div class="operating-company-logo">
-            <img src="cocozas-logo.png" alt="COCOZAS ワクワク、生きる">
+            <img src="src/assets/images/cocozas-logo.png" alt="COCOZAS ワクワク、生きる">
           </div>
 
           <p class="operating-company-desc">
@@ -1717,7 +1723,7 @@
     <div class="footer-grid">
       <div class="footer-company">
         <div class="footer-logo">
-          <img src="assets/footer-logo.png" alt="& VILLA" width="120" height="25">
+          <img src="src/assets/images/footer-logo.png" alt="& VILLA" width="120" height="25">
         </div>
         <p class="footer-company-label">運営会社</p>
         <p class="footer-company-name"><a href="#" class="footer-external-link">ココザス株式会社<svg class="footer-external-icon" viewBox="0 0 10 10" fill="none"><path d="M2.25 8.5C2.04375 8.5 1.86719 8.42656 1.72031 8.27969C1.57344 8.13281 1.5 7.95625 1.5 7.75V2.25C1.5 2.04375 1.57344 1.86719 1.72031 1.72031C1.86719 1.57344 2.04375 1.5 2.25 1.5H5V2.25H2.25V7.75H7.75V5H8.5V7.75C8.5 7.95625 8.42656 8.13281 8.27969 8.27969C8.13281 8.42656 7.95625 8.5 7.75 8.5H2.25ZM4.03125 6.5L3.5 5.96875L7.21875 2.25H6V1.5H8.5V4H7.75V2.78125L4.03125 6.5Z" fill="#1C1B1F"/></svg></a></p>
@@ -1755,18 +1761,18 @@
     <h3 class="footer-related-title">RELATED SERVICES</h3>
     <div class="footer-related-roll">
       <div class="footer-related-track">
-        <a href="#" class="footer-related-item"><img src="assets/Group 12.png" alt="COCO VILLA"></a>
-        <a href="#" class="footer-related-item"><img src="assets/Group 13.png" alt="COCO VILLA Owners"></a>
-        <a href="#" class="footer-related-item"><img src="assets/Group2.png" alt="COCOZAS"></a>
-        <a href="#" class="footer-related-item"><img src="assets/Group3.png" alt="&やど管理"></a>
-        <a href="#" class="footer-related-item"><img src="assets/Group 12.png" alt="COCO VILLA"></a>
-        <a href="#" class="footer-related-item"><img src="assets/Group 13.png" alt="COCO VILLA Owners"></a>
-        <a href="#" class="footer-related-item"><img src="assets/Group2.png" alt="COCOZAS"></a>
-        <a href="#" class="footer-related-item"><img src="assets/Group3.png" alt="&やど管理"></a>
-        <a href="#" class="footer-related-item"><img src="assets/Group 12.png" alt="COCO VILLA"></a>
-        <a href="#" class="footer-related-item"><img src="assets/Group 13.png" alt="COCO VILLA Owners"></a>
-        <a href="#" class="footer-related-item"><img src="assets/Group2.png" alt="COCOZAS"></a>
-        <a href="#" class="footer-related-item"><img src="assets/Group3.png" alt="&やど管理"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group 12.png" alt="COCO VILLA"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group 13.png" alt="COCO VILLA Owners"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group2.png" alt="COCOZAS"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group3.png" alt="&やど管理"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group 12.png" alt="COCO VILLA"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group 13.png" alt="COCO VILLA Owners"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group2.png" alt="COCOZAS"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group3.png" alt="&やど管理"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group 12.png" alt="COCO VILLA"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group 13.png" alt="COCO VILLA Owners"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group2.png" alt="COCOZAS"></a>
+        <a href="#" class="footer-related-item"><img src="src/assets/images/Group3.png" alt="&やど管理"></a>
       </div>
     </div>
   </div>
