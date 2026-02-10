@@ -22,6 +22,15 @@
       --footer-bg: #FCFBF7;
       --contact-bg: #1a1a1a;
       --copyright-bg: #fdecdb;
+      --color-primary: #E1690D;
+      --color-primary-hover: #EF802B;
+      --color-dark: #101010;
+      --header-bg: rgba(255, 255, 255, 0.8);
+      --font-sans: 'Noto Sans JP', sans-serif;
+      --font-montserrat: 'Montserrat', sans-serif;
+      --transition-fast: 0.2s ease-in;
+      --transition-smooth: 0.2s ease-in-out;
+      --hover-opacity: 0.7;
     }
 
     *, *::before, *::after {
@@ -55,71 +64,200 @@
     }
 
     /* ========================================
-       HEADER SECTION
+       共通レイアウト
     ======================================== */
-    .header {
-      position: sticky;
+    .l-inner {
+      padding-inline: 20px;
+      max-width: 1240px;
+      margin-inline: auto;
+    }
+
+    /* ========================================
+       HEADER SECTION (FLOCSS)
+    ======================================== */
+    .l-header {
+      position: fixed;
+      z-index: 150;
       top: 0;
-      z-index: 100;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      transition: background 0.2s ease-in-out;
+      padding-block: 17.5px;
+    }
+
+    @media screen and (min-width: 768px) {
+      .l-header {
+        padding-block: 20px;
+      }
+    }
+
+    .l-header.is-checked {
+      background: rgba(255, 255, 255, 0);
+    }
+
+    .l-header.is-checked .p-header_logo {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .l-header_inner {
+      padding-right: 17.5px;
+      max-width: none;
+    }
+
+    @media screen and (min-width: 768px) {
+      .l-header_inner {
+        padding-inline: 30px;
+      }
+    }
+
+    .p-header_contents {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px 40px;
-      background-color: #fff;
     }
 
-    .header-logo {
+    .p-header_logo a {
+      transition: opacity 0.2s ease-in;
+    }
+
+    @media (any-hover: hover) {
+      .p-header_logo a:hover {
+        opacity: 0.7;
+      }
+    }
+
+    .p-header_logo img {
+      width: 147px;
+      aspect-ratio: 147 / 30;
+    }
+
+    @media screen and (min-width: 768px) {
+      .p-header_logo img {
+        width: 195px;
+        aspect-ratio: 195 / 40;
+      }
+    }
+
+    .p-header_list {
       display: flex;
       align-items: center;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .p-header_link a {
       text-decoration: none;
-      color: var(--text-black);
+      color: inherit;
+      transition: opacity 0.2s ease-in;
     }
 
-    .header-logo img {
-      display: block;
-      height: 25px;
-      width: auto;
+    @media (any-hover: hover) {
+      .p-header_link a:hover {
+        opacity: 0.7;
+      }
     }
 
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 40px;
+    .p-header_linkInner {
+      height: 100%;
     }
 
-    .header-nav a {
+    .p-header_linkInner p {
+      font-size: 13.47px;
+      font-weight: 600;
+    }
+
+    .p-header_linkContact a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    @media (any-hover: hover) {
+      .p-header_linkContact a:hover .p-header_contactInner {
+        background: #101010;
+      }
+    }
+
+    .p-header_contactInner {
+      padding: 18px 48px;
+      border-radius: 25px;
+      background: #E1690D;
+      transition: background 0.2s ease-in;
+    }
+
+    .p-header_contactInner p {
+      color: #FFF;
+      text-align: center;
       font-size: 14px;
-      font-weight: 500;
-      color: var(--text-black);
-      text-decoration: none;
-      transition: opacity 0.2s;
+      font-weight: 700;
+      line-height: 1;
     }
 
-    .header-nav a:hover {
-      opacity: 0.7;
+    .p-header_menuButton {
+      width: 35px;
+      aspect-ratio: 1 / 1;
+      position: relative;
+      z-index: 105;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
 
-    .header-nav a.header-cta {
-      color: #fff;
+    .p-header_menuButton span {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 1.4px;
+      background: #101010;
+      transition: all 0.25s ease-in-out;
+      transition-delay: 0.2s;
     }
 
-    .header-cta {
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #fff;
-      background-color: var(--orange);
-      text-decoration: none;
-      border-radius: 9999px;
-      transition: opacity 0.2s;
+    .p-header_menuButton span:nth-child(1) {
+      top: calc(50% - 8.6px);
     }
 
-    .header-cta:hover {
-      opacity: 0.9;
+    .p-header_menuButton span:nth-child(2) {
+      top: 50%;
+      transform-origin: left;
+    }
+
+    .p-header_menuButton span:nth-child(3) {
+      top: calc(50% + 8.6px);
+    }
+
+    .p-header_menuButton.is-checked span {
+      background: #FFF;
+    }
+
+    .p-header_menuButton.is-checked span:nth-child(1) {
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .p-header_menuButton.is-checked span:nth-child(2) {
+      transform: translate(-50%, -50%) scaleX(0);
+    }
+
+    .p-header_menuButton.is-checked span:nth-child(3) {
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    @media screen and (max-width: 767.98px) {
+      .u-hidden-sp {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      .u-hidden-pc {
+        display: none;
+      }
     }
 
     /* ========================================
@@ -129,6 +267,13 @@
       position: relative;
       width: 100%;
       background: #fff;
+      padding-top: 140px;
+    }
+
+    @media screen and (max-width: 767.98px) {
+      .hero-section {
+        padding-top: 90px;
+      }
     }
 
     .hero-carousel-wrap {
@@ -136,7 +281,7 @@
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      overflow: visible;
+      overflow: clip;
     }
 
     .swiper-container {
@@ -172,7 +317,7 @@
       aspect-ratio: 3 / 2;
       transform-style: preserve-3d;
       will-change: transform;
-      overflow: visible;
+      overflow: hidden;
     }
 
     .swiper-slide .slide-inner {
@@ -295,6 +440,129 @@
         opacity: 1;
         visibility: visible;
       }
+    }
+
+    /* ========================================
+       CATCHPHRASE ANIMATION
+    ======================================== */
+    .p-lead_catchphrase {
+      position: sticky;
+      top: 150px;
+      z-index: 20;
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    @media screen and (min-width: 768px) {
+      .p-lead_catchphrase {
+        top: 170px;
+        gap: 8px;
+      }
+    }
+
+    .p-lead_catchphrase_row {
+      display: inline-block;
+      overflow: hidden;
+      height: fit-content;
+    }
+
+    .p-lead_catchphrase .p-lead_catchphrase_row span {
+      display: inline-block;
+      transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1);
+    }
+
+    .p-lead_catchphrase.is-hideDown .p-lead_catchphrase_row span {
+      transform: translateY(110%);
+      transition-delay: 0s;
+    }
+
+    .p-lead_catchphrase.is-hideUp .p-lead_catchphrase_row span {
+      transform: translateY(-110%);
+      transition-delay: 0s;
+    }
+
+    .p-lead_catchphrase.is-show .p-lead_catchphrase_row span {
+      transform: translateY(0);
+    }
+
+    /* ディレイ設定（SP） */
+    .p-lead_catchphrase.is-show .p-lead_catchphrase_row .delay1 {
+      transition-delay: 0.1s;
+    }
+    .p-lead_catchphrase.is-show .p-lead_catchphrase_row .delay1-4 {
+      transition-delay: 0.4s;
+    }
+    .p-lead_catchphrase.is-show .p-lead_catchphrase_row .delay4-7 {
+      transition-delay: 0.7s;
+    }
+    .p-lead_catchphrase.is-show .p-lead_catchphrase_row .delay7-10 {
+      transition-delay: 1.0s;
+    }
+    .p-lead_catchphrase.is-show .p-lead_catchphrase_row .delay7-13 {
+      transition-delay: 1.3s;
+    }
+
+    /* ディレイ設定（PC） */
+    @media screen and (min-width: 768px) {
+      .p-lead_catchphrase.is-show .p-lead_catchphrase_row .delay1-4 {
+        transition-delay: 0.1s;
+      }
+      .p-lead_catchphrase.is-show .p-lead_catchphrase_row .delay4-7 {
+        transition-delay: 0.4s;
+      }
+      .p-lead_catchphrase.is-show .p-lead_catchphrase_row .delay7-10 {
+        transition-delay: 0.7s;
+      }
+      .p-lead_catchphrase.is-show .p-lead_catchphrase_row .delay7-13 {
+        transition-delay: 0.7s;
+      }
+    }
+
+    /* 英語テキストフォント */
+    .p-lead_catchphrase-en .p-lead_catchphrase_row span {
+      font-family: var(--font-montserrat);
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.125;
+      letter-spacing: -3.6px;
+    }
+
+    @media screen and (min-width: 768px) {
+      .p-lead_catchphrase-en .p-lead_catchphrase_row span {
+        font-size: 110px;
+      }
+    }
+
+    .p-lead_catchphrase-en .p-lead_catchphrase_row span.lsLarge {
+      letter-spacing: normal;
+    }
+
+    /* 日本語テキストフォント */
+    .p-lead_catchphrase-ja .p-lead_catchphrase_row span {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.556;
+      letter-spacing: -3.8px;
+    }
+
+    @media screen and (min-width: 768px) {
+      .p-lead_catchphrase-ja .p-lead_catchphrase_row span {
+        font-size: 26px;
+        line-height: 2.308;
+      }
+    }
+
+    @media screen and (max-width: 370px) {
+      .p-lead_catchphrase-ja .p-lead_catchphrase_row span {
+        font-size: 16px;
+      }
+    }
+
+    .p-lead_catchphrase-ja .p-lead_catchphrase_row span.lsLarge {
+      letter-spacing: normal;
     }
 
     /* ========================================
@@ -919,15 +1187,18 @@
     }
 
     .carousel-track {
-      display: flex;
-      gap: 60px;
-      transition: transform 0.5s ease-in-out;
+      position: relative;
+      width: 100%;
+      min-height: 380px;
       padding: 30px 0;
     }
 
     .carousel-slide {
-      flex-shrink: 0;
+      position: absolute;
+      left: 50%;
+      top: 30px;
       width: 360px;
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     }
 
     .service-card {
@@ -1384,11 +1655,15 @@
       display: block;
       text-decoration: none;
       color: inherit;
-      transition: opacity 0.3s ease;
+      transition: none;
     }
 
-    .contact-link:hover {
-      opacity: 0.9;
+    .contact-section {
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-section:hover {
+      background-color: #ef802b;
     }
 
     .footer-main {
@@ -1665,23 +1940,56 @@
   </style>
 </head>
 <body>
+  <!-- ========================================
+       HEADER (FLOCSS) ※smooth-wrapperの外に配置して固定を維持
+  ======================================== -->
+  <header class="l-header">
+    <div class="l-inner l-header_inner">
+      <div class="p-header_contents">
+
+        <h1 class="p-header_logo">
+          <a href="/">
+            <img src="src/assets/images/VILLA-logo.svg" alt="＆VILLA" width="195" height="40" loading="eager">
+          </a>
+        </h1>
+
+        <nav class="p-header_nav u-hidden-sp">
+          <ul class="p-header_list">
+            <li class="p-header_link">
+              <a href="/about/">
+                <div class="p-header_linkInner"><p>&amp; VILLAについて</p></div>
+              </a>
+            </li>
+            <li class="p-header_link">
+              <a href="/service/">
+                <div class="p-header_linkInner"><p>サービス</p></div>
+              </a>
+            </li>
+            <li class="p-header_link">
+              <a href="/information/">
+                <div class="p-header_linkInner"><p>お知らせ</p></div>
+              </a>
+            </li>
+            <li class="p-header_linkContact">
+              <a href="/contact/">
+                <div class="p-header_contactInner"><p>お問い合わせ</p></div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <button id="js-menu-button" class="p-header_menuButton u-hidden-pc" aria-label="メニューを開く">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
   <div class="smooth-wrapper">
     <div class="smooth-content">
-
-      <!-- ========================================
-           HEADER
-      ======================================== -->
-      <header class="header">
-        <a href="/" class="header-logo" aria-label="& VILLA トップへ">
-          <img src="src/assets/images/header-logo.png" alt="＆VILLA">
-        </a>
-        <nav class="header-nav">
-          <a href="#">＆VILLAについて</a>
-          <a href="#">サービス</a>
-          <a href="#">お問い合わせ</a>
-          <a href="#" class="header-cta">お問い合わせ</a>
-        </nav>
-      </header>
 
       <!-- ========================================
            HERO SECTION (Swiper)
@@ -1723,9 +2031,30 @@
       ======================================== -->
       <section class="hero-scroll-section">
         <div class="hero-scroll-copy" data-fade data-fade-delay="0">
-          <h1 class="hero-scroll-title">Vacation Rentals.
-All in One.</h1>
-          <p class="hero-scroll-caption">バケーションレンタルのすべてを、ひとつに</p>
+          <div class="p-lead_catchphrase is-hideDown">
+            <strong class="p-lead_catchphrase-en">
+              <span class="p-lead_catchphrase_row">
+                <span class="delay1">Vacation&nbsp;</span>
+              </span><br class="u-hidden-pc">
+              <span class="p-lead_catchphrase_row">
+                <span class="delay1-4">Rentals</span>
+                <span class="delay1-4 lsLarge">.</span>
+              </span><br>
+              <span class="p-lead_catchphrase_row">
+                <span class="delay4-7">All&nbsp;in&nbsp;One</span>
+                <span class="delay4-7 lsLarge">.</span>
+              </span>
+            </strong>
+            <p class="p-lead_catchphrase-ja">
+              <span class="p-lead_catchphrase_row">
+                <span class="delay7-10">バケーションレンタルのすべてを、</span>
+              </span><br class="u-hidden-pc">
+              <span class="p-lead_catchphrase_row">
+                <span class="delay7-13">ひとつ</span>
+                <span class="delay7-13 lsLarge">に</span>
+              </span>
+            </p>
+          </div>
         </div>
         <div class="hero-scroll-images">
           <div class="hero-scroll-img img-d10" data-parallax-speed="0.15" data-fade data-fade-delay="0">
@@ -2263,36 +2592,53 @@ All in One.</h1>
       const slides = document.querySelectorAll('.carousel-slide');
       const arrows = document.querySelectorAll('.flow-arrow');
       const slideCount = slides.length;
-      const slideWidth = 360;
-      const slideGap = 60;
-      
+
       let currentSlide = 0;
       let autoplayInterval;
       const autoplayDelay = 4000;
 
-      function getOffset(index) {
-        const containerWidth = document.querySelector('.carousel-container').offsetWidth;
-        const totalSlideWidth = slideWidth + slideGap;
-        const centerOffset = (containerWidth - slideWidth) / 2;
-        return centerOffset - (index * totalSlideWidth);
-      }
-
       function goToSlide(index) {
         if (index < 0) index = slideCount - 1;
         if (index >= slideCount) index = 0;
-        
+
         currentSlide = index;
-        const offset = getOffset(index);
-        track.style.transform = `translateX(${offset}px)`;
-        
+        const leftIndex = (index - 1 + slideCount) % slideCount;
+        const rightIndex = (index + 1) % slideCount;
+
+        const cardWidth = 360;
+        const gap = 60;
+        const halfCard = cardWidth / 2;
+        const step = cardWidth + gap;
+
         slides.forEach((slide, i) => {
-          slide.style.opacity = i === index ? '1' : '0.5';
-          slide.style.transform = i === index ? 'scale(1)' : 'scale(0.9)';
+          if (i === leftIndex) {
+            slide.style.transform = `translateX(${-halfCard - step}px) scale(0.9)`;
+            slide.style.opacity = '0.5';
+            slide.style.zIndex = '1';
+          } else if (i === index) {
+            slide.style.transform = `translateX(${-halfCard}px) scale(1)`;
+            slide.style.opacity = '1';
+            slide.style.zIndex = '2';
+          } else if (i === rightIndex) {
+            slide.style.transform = `translateX(${-halfCard + step}px) scale(0.9)`;
+            slide.style.opacity = '0.5';
+            slide.style.zIndex = '1';
+          }
         });
+
+        // トラック高さを中央カードに合わせる
+        const centerCard = slides[index].querySelector('.service-card');
+        if (centerCard) {
+          track.style.minHeight = (centerCard.offsetHeight + 60) + 'px';
+        }
       }
 
       function nextSlide() {
         goToSlide(currentSlide + 1);
+      }
+
+      function prevSlide() {
+        goToSlide(currentSlide - 1);
       }
 
       function startAutoplay() {
@@ -2308,19 +2654,24 @@ All in One.</h1>
 
       arrows.forEach(arrow => {
         arrow.addEventListener('click', function() {
-          const slideIndex = parseInt(this.getAttribute('data-slide'));
-          goToSlide(slideIndex);
-          startAutoplay();
+          const arrowId = this.id;
+          if (arrowId === 'arrow0') {
+            prevSlide();
+            startAutoplay();
+          } else if (arrowId === 'arrow1') {
+            // 大矢印 → 「物件の売買」(index 1) を中央に
+            goToSlide(1);
+            startAutoplay();
+          } else if (arrowId === 'arrow2') {
+            nextSlide();
+            startAutoplay();
+          }
         });
       });
 
       const container = document.querySelector('.carousel-container');
       container.addEventListener('mouseenter', stopAutoplay);
       container.addEventListener('mouseleave', startAutoplay);
-
-      slides.forEach(slide => {
-        slide.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      });
 
       goToSlide(0);
       startAutoplay();
@@ -2539,6 +2890,38 @@ All in One.</h1>
         new ParallaxGallery();
         new FadeInOut();
         new StickyText();
+
+        // ========== Catchphrase Animation ==========
+        const catchphrase = document.querySelector('.p-lead_catchphrase');
+        if (catchphrase) {
+          let lastScrollY = window.scrollY;
+
+          const catchphraseObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                catchphrase.classList.remove('is-hideDown', 'is-hideUp');
+                catchphrase.classList.add('is-show');
+              } else {
+                const currentScrollY = window.scrollY;
+                catchphrase.classList.remove('is-show');
+                if (currentScrollY > lastScrollY) {
+                  catchphrase.classList.add('is-hideUp');
+                } else {
+                  catchphrase.classList.add('is-hideDown');
+                }
+                lastScrollY = currentScrollY;
+              }
+            });
+          }, {
+            threshold: 0.2
+          });
+
+          window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+          }, { passive: true });
+
+          catchphraseObserver.observe(catchphrase);
+        }
       }
     });
   </script>
