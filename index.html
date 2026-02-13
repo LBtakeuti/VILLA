@@ -738,6 +738,12 @@
       font-size: 18px;
       line-height: 18px;
       color: var(--green);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .service-phase-text.is-switching {
+      opacity: 0;
+      transform: translateY(-8px);
     }
 
     .service-flow-line {
@@ -1480,7 +1486,7 @@
       <div class="p-header_contents">
 
         <h1 class="p-header_logo">
-          <a href="/">
+          <a href="top.html">
             <img src="src/assets/images/VILLA-logo.svg" alt="＆VILLA" width="195" height="40" loading="eager">
           </a>
         </h1>
@@ -1488,7 +1494,7 @@
         <nav class="p-header_nav u-hidden-sp">
           <ul class="p-header_list">
             <li class="p-header_link">
-              <a href="/about/">
+              <a href="index.html">
                 <div class="p-header_linkInner"><p>&amp; VILLAについて</p></div>
               </a>
             </li>
@@ -2064,6 +2070,8 @@
         let currentSlide = 0;
         let autoplayInterval;
         const autoplayDelay = 4000;
+        var phaseText = document.querySelector('.service-phase-text');
+        var phaseLabels = ['売上拡大・成長', '売買／開業までの計画・準備', '営業・改善'];
 
         function getCardWidth() {
           return window.innerWidth <= 768 ? 240 : 280;
@@ -2097,6 +2105,15 @@
               slide.style.zIndex = '1';
             }
           });
+
+          // フェーズテキスト更新（アニメーション付き）
+          if (phaseText && phaseLabels[index] !== undefined) {
+            phaseText.classList.add('is-switching');
+            setTimeout(function() {
+              phaseText.textContent = phaseLabels[index];
+              phaseText.classList.remove('is-switching');
+            }, 250);
+          }
 
           var centerCard = slides[index].querySelector('.service-card');
           if (centerCard) {

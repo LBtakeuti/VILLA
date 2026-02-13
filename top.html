@@ -372,17 +372,18 @@
     }
 
     .swiper-pagination-bullet {
-      margin: 0 9px;
+      margin: 0 10px;
       width: 12px;
       height: 12px;
-      background-color: #fff;
-      opacity: 0.4;
+      background-color: rgb(255, 255, 255);
+      opacity: 0.8;
       transition: all 0.3s ease;
     }
 
     .swiper-pagination-bullet:hover,
     .swiper-pagination-bullet-active {
-      opacity: 1;
+      background-color: rgb(239, 128, 43);
+      opacity: 0.8;
     }
 
     @media (min-width: 1281px) {
@@ -1153,6 +1154,12 @@
       font-size: 22px;
       line-height: 22px;
       color: var(--green);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .service-phase-text.is-switching {
+      opacity: 0;
+      transform: translateY(-8px);
     }
 
     .service-flow-line {
@@ -1948,7 +1955,7 @@
       <div class="p-header_contents">
 
         <h1 class="p-header_logo">
-          <a href="/">
+          <a href="top.html">
             <img src="src/assets/images/VILLA-logo.svg" alt="＆VILLA" width="195" height="40" loading="eager">
           </a>
         </h1>
@@ -1956,7 +1963,7 @@
         <nav class="p-header_nav u-hidden-sp">
           <ul class="p-header_list">
             <li class="p-header_link">
-              <a href="/about/">
+              <a href="index.html">
                 <div class="p-header_linkInner"><p>&amp; VILLAについて</p></div>
               </a>
             </li>
@@ -2596,6 +2603,9 @@
       let currentSlide = 0;
       let autoplayInterval;
       const autoplayDelay = 4000;
+      const phaseText = document.querySelector('.service-phase-text');
+      const phaseLabels = ['売上拡大・成長', '売買／開業までの計画・準備', '営業・改善'];
+      const phaseColors = ['#ef802b', '#14af91', '#0f83c6'];
 
       function goToSlide(index) {
         if (index < 0) index = slideCount - 1;
@@ -2625,6 +2635,16 @@
             slide.style.zIndex = '1';
           }
         });
+
+        // フェーズテキスト更新（アニメーション付き）
+        if (phaseText && phaseLabels[index] !== undefined) {
+          phaseText.classList.add('is-switching');
+          setTimeout(() => {
+            phaseText.textContent = phaseLabels[index];
+            phaseText.style.color = phaseColors[index];
+            phaseText.classList.remove('is-switching');
+          }, 250);
+        }
 
         // トラック高さを中央カードに合わせる
         const centerCard = slides[index].querySelector('.service-card');
